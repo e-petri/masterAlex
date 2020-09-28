@@ -1,0 +1,15 @@
+
+.header{
+  height:30vh;
+  background-color: black;
+  &__greeting{
+    // splits welcome and user name into two lines
+    span::before {content: '\A'; white-space: pre;}
+    font-size: 30px;
+    color: white;
+    position: relative;
+    left:0;
+    margin: 10px;
+    text-align: left;
+
+  }}
