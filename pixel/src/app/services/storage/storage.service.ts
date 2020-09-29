@@ -21,11 +21,15 @@ export class StorageService {
       //   // dummy data
       this.items = [
         {
+          id: "00",
+          cntID: 100,
+        },
+        {
           id: "01",
           title: "Aufgabe 01",
           value: "Aufgabe value 01",
           modified: 1,
-          createdAt: "11.09.2020",
+          createdAt: "11.9.2020",
           finishedAt: null,
           priority: null,
         },
@@ -34,7 +38,7 @@ export class StorageService {
           title: "Aufgabe 02",
           value: "Aufgabe value 02",
           modified: 1,
-          createdAt: "10.09.2020",
+          createdAt: "10.9.2020",
           finishedAt: null,
           priority: null,
         },
@@ -43,8 +47,8 @@ export class StorageService {
           title: "Aufgabe 03",
           value: "Aufgabe value 03",
           modified: 1,
-          createdAt: "13.09.2020",
-          finishedAt: null,
+          createdAt: "13.9.2020",
+          finishedAt: "27.9.2020",
           priority: null,
         },
         {
@@ -52,8 +56,8 @@ export class StorageService {
           title: "Aufgabe 04",
           value: "Aufgabe value 04",
           modified: 1,
-          createdAt: "09.09.2020",
-          finishedAt: "22.09.2020",
+          createdAt: "09.9.2020",
+          finishedAt: "26.9.2020",
           priority: null,
         },
         {
@@ -61,8 +65,8 @@ export class StorageService {
           title: "Aufgabe 05",
           value: "Aufgabe value 05",
           modified: 1,
-          createdAt: "07.09.2020",
-          finishedAt: "24.09.2020",
+          createdAt: "07.9.2020",
+          finishedAt: "24.9.2020",
           priority: null,
         },
       ];
@@ -75,10 +79,17 @@ export class StorageService {
     return;
   }
   async addItem(item: Item): Promise<Item[]> {
-    const storageData = await this.storage.get(ITEMS_KEY);
+    var storageData = await this.storage.get(ITEMS_KEY);
     console.log("storageData", storageData);
-    const today = new Date();
-    item.createdAt = today.toLocaleDateString();
+    
+    /****** get last used ID and increase ID  */
+    item.id = storageData[0].cntID+1;
+    storageData[0].cntID = item.id;
+
+    //const today = new Date();
+    //item.createdAt = today.toLocaleDateString();
+    //item.title = item.value;
+    //item.finishedAt
     console.log("item.createdAt", item.createdAt);
     if (this.items) {
       // console.log("items: ", this.items, " item", item);
@@ -97,30 +108,57 @@ export class StorageService {
     return await this.storage.get(ITEMS_KEY);
   }
 
-  async updateItem(inputItem: Item): Promise<any> {
-    console.log("inputItem", inputItem.title);
+  async updateItem(inputItem: Item, attribute: string, newValue: any): Promise<any> {
+    
     const storageItems = await this.getItems();
-    const filter = storageItems.filter(items => {
-      items.title === inputItem.title
-     console.log("found same title ", items.title, inputItem.title);
+    console.log("updateItem: ", inputItem, attribute, newValue);
+    
+    //find index of ID
+    var tempStorage = storageItems;
+    const isID = (element) => element.id === inputItem.id;
+    var index = tempStorage.findIndex(isID);
+    
+    if(attribute === "finishedAt")
+      tempStorage[index].finishedAt = newValue;
+    
+    //const array1 = [5, 12, 8, 130, 44];
+    //const isLargeNumber = (element) => element > 13;
+    //console.log(array1.findIndex(isLargeNumber));
+
+
+    return this.storage.set(ITEMS_KEY, tempStorage);
+    /*if(attribute === "finishedAt"){
+
+      const filteredItem = storageItems.filter(items => {
+        items.title === inputItem.title
+      })
+      filteredItem.items. = newValue;
+
+
+    }*/
+    // console.log("inputItem", inputItem.title);
+    // const storageItems = await this.getItems();
+    // const filter = storageItems.filter(items => {
+    //   items.title === inputItem.title
+    //   console.log("found same title ", items.title, inputItem.title);
               
             
-    });
-    console.log("filter", filter);
-    let newItems: Item[] = [];
-    let counter = 0;
-    for (let i of storageItems) {
-      if (i.title === inputItem.title) {
-        console.log("i", i);
+    // });
+    // console.log("filter", filter);
+    // let newItems: Item[] = [];
+    // let counter = 0;
+    // for (let i of storageItems) {
+    //   if (i.title === inputItem.title) {
+    //     console.log("i", i);
 
-        // newItems.push(item);
-        newItems.push(i);
-        return;
-      }
+    //     // newItems.push(item);
+    //     newItems.push(i);
+    //     return;
+    //   }
 
-      console.log("round#", counter++);
-    }
-    return this.storage.set(ITEMS_KEY, newItems);
+    //   console.log("round#", counter++);
+    // }
+    //return this.storage.set(ITEMS_KEY, newItems);
 
     // return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
     //   if (!items || items.length === 0) {

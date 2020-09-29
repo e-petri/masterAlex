@@ -73,7 +73,7 @@ export class HomePage {
         {
           text: "Ok",
           handler: () => {
-            // this.deleteListItem(item);
+            this.deleteListItem(item);
           },
         },
       ],
@@ -93,6 +93,7 @@ export class HomePage {
     console.log("avatar.info", this.avatarInfo);
   }
   async addItem(input: string) {
+    const today = new Date();
     console.log("addItem() is called");
     if (input === "" || input === undefined) {
       console.log("input is empty");
@@ -103,7 +104,12 @@ export class HomePage {
     }
     // this.storage.set("tasks", "newItem");
     // this.newItem.modified = Date.now();
-    this.newItem.id = Date.now();
+    this.newItem.id = null;
+    this.newItem.title = input;
+    this.newItem.value = null;
+    this.newItem.finishedAt = null;
+    this.newItem.priority = null;
+    this.newItem.createdAt = today.toLocaleDateString();
 
     this.storageService.addItem(this.newItem).then((item) => {
       this.newItem = <Item>{};
@@ -128,29 +134,40 @@ export class HomePage {
       this.items = items;
       console.log("All items", this.items);
 
-      this.itemsToDo = this.items.filter((item) => item.finishedAt !== null);
+      this.itemsToDo = this.items.filter((item) => item.finishedAt === null);
       console.log("this.itemsToDo", this.itemsToDo);
     });
     return this.itemsToDo;
   }
+
+  async deleteItem(item) {
+    await this.storageService.deleteItem(item);
+    this.loadItems();
+  }
+
   async deleteListItem(item) {
-    const storageItems = this.storageService.getItems();
-    const test = (await storageItems).filter(
-      (items) => items.title === "Test1"
-    );
-    console.log("test", test);
-    item.finishedAt = this.today.toLocaleDateString();
+    // const storageItems = await this.storageService.getItems();
+    // console.log("deleteListItem: ", item.value);
+    // const test =storageItems.filter(
+    //   (items) => items.title === item.value
+    // );
+    // console.log("test", test);
+    
+    // item.finishedAt = this.today.toLocaleDateString();
+    const todaysDate = this.today.toLocaleDateString();
+    await this.storageService.updateItem(item, "finishedAt", todaysDate);
+    this.loadItems();
 
-    // this.storageService.deleteItem(item);
+    //this.storageService.deleteItem(item);
 
-    await this.storageService.getItems().then((items: Item[]) => {
+    /*await this.storageService.getItems().then((items: Item[]) => {
       for (let i of items) {
         if (i.title === item.title) {
         }
         console.log("found item title", i.title, item.title);
       }
     });
-    console.log("item", item, item.finishedAt);
+    console.log("item", item, item.finishedAt);*/
     // this.itemsToDo = this.items.filter((item) => item.finishedAt !== null);
     // console.log("this.itemsToDo", this.itemsToDo);
     // const storageData = await this.storageService.getItems();
@@ -186,6 +203,8 @@ export class HomePage {
       this.navCtrl.navigateForward("/statistic");
     } else if (pageName === "home") {
       this.navCtrl.navigateForward("/home");
+    } else if (pageName === "fantasyleague") {
+      this.navCtrl.navigateForward("/fantasyleague");
     }
   }
 

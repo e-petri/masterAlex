@@ -1,6 +1,6 @@
 import { StorageService } from './../../services/storage/storage.service';
 import { ItemDetailPage } from "../../item-detail/item-detail.page";
-import { StorageService } from "../../services/storage/storage.service";
+//import { StorageService } from "../../services/storage/storage.service";
 import { IonicStorageModule } from "@ionic/storage";
 import { AvatarService } from "../../services/avatar/avatar.service";
 import { Item } from "../../interfaces/Item";
@@ -20,6 +20,9 @@ import { Storage } from "@ionic/storage";
 
 import { Chart } from "chart.js";
 import { OnInit } from "@angular/core";
+
+const NUM_DAYS = 8;
+
 @Component({
   selector: "app-statistic",
   templateUrl: "statistic.page.html",
@@ -56,7 +59,7 @@ export class StatisticPage implements OnInit {
 
     this.getItemsData();
     this.getDate("all");
-    this.storageService.getToDoList();
+    //this.storageService.getToDoList();
   }
   ngOnInit() {
     this.dummyChart();
@@ -83,10 +86,30 @@ export class StatisticPage implements OnInit {
   }
 
 
-  dummyChart() {
+  async dummyChart() {
+
+    /****** init value counter array days ******/
+    var cntItems = [0, 0, 0, 0, 0, 0, 0, 0];
+    let dataStor = await this.storageService.getItems();
+    
+    /***** get playerData *****/
+    var i;
+    for (i = 0; i < NUM_DAYS; i++) {
+      dataStor.forEach(cntup);
+      function cntup(item, index) {
+        var tempCreatedAt = new Date();
+        var datetest = tempCreatedAt.getDate() - i;
+        tempCreatedAt.setDate(datetest);
+        let compareTest = tempCreatedAt.toLocaleDateString();
+        if(item.finishedAt == compareTest)
+          cntItems[NUM_DAYS-1-i]++;
+      }
+    }
+    console.log("Datastore cntItems: ", cntItems);
+    
     Chart.defaults.global.elements.line.fill = false;
-    // var ctx = document.getElementById("line-chart");
-    var ctx = document.getElementById("line-chart").getContext("2d");
+    var ctx = document.getElementById("line-chart");
+    //var ctx = document.getElementById("line-chart").getContext("2d");
     new Chart(ctx, {
       type: "line",
       data: {
@@ -102,13 +125,13 @@ export class StatisticPage implements OnInit {
         ],
         datasets: [
           {
-            data: this.dataSetFox,
+            data: cntItems,
             label: "TaskFox",
             borderColor: "#3e95cd",
             fill: false,
           },
           {
-            data: [0, 2, 4, 1, 0, 5, 2],
+            data: this.dataSetFox,
             label: "Enemy",
             borderColor: "#8e5ea2",
             fill: false,
@@ -157,6 +180,8 @@ export class StatisticPage implements OnInit {
       this.navCtrl.navigateForward("/statistic");
     } else if (pageName === "home") {
       this.navCtrl.navigateForward("/home");
+    } else if (pageName === "fantasyleague") {
+      this.navCtrl.navigateForward("/fantasyleague");
     }
   }
   async dataForChart() {

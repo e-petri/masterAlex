@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'statistic',
     loadChildren: () => import('./pages/statistic/statistic.module').then( m => m.StatisticPageModule)
+  },  {
+    path: 'fantasyleague',
+    loadChildren: () => import('./fantasyleague/fantasyleague.module').then( m => m.FantasyleaguePageModule)
   },
+
 ];
 
 @NgModule({
