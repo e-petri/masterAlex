@@ -28,7 +28,8 @@
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false" color="light"></ion-menu-button>
     </ion-buttons>
-    <div class="header__greeting"><span>Welcome</span><span>Alex!</span></div>
+    <div class="header__greeting"><span>Welcome</span><span>Alex!</span><span>Mäuse: {{money}}</span></div>
+  
   </div>
 
 </ion-header> 
@@ -48,7 +49,7 @@
         <div class="item-note" item-end></div
       ></ion-input>
       <div class="item-note" item-end>
-        <ion-button (click)="addItem(newItem.value)" color="dark">Add Task</ion-button>
+        <ion-button (click)="addItem(newItem.value)" color="medium">Add Task</ion-button>
       </div>
     </ion-item>
     <div>
@@ -64,12 +65,12 @@
           <ion-item-sliding>
             <!-- [(ngModel)]="item.isChecked" -->
             <ion-item>
-              <ion-checkbox color="dark" 
+              <ion-checkbox color="primary" 
               (ionChange)="itemChecked($event, item)" 
               ></ion-checkbox>
               <!-- color change of the border checkbox 
               style=" --border-color: green;" -->
-              <ion-label>
+              <ion-label class="listItemLabel">
                 {{item.title}} {{item.value}}</ion-label
               >
             </ion-item>

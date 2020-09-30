@@ -6,6 +6,7 @@ export interface Item {
     value: string;
   //  modified: NumberSymbol;
     createdAt: string;
+    msgFin: string;
     finishedAt: string;
     priority: number;
 }

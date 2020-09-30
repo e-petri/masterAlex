@@ -31,6 +31,7 @@ export class HomePage {
   today = new Date();
   itemsToDo: Item[];
   avatarInfo;
+  money = 0;
   // @ViewChild("checkboxElement", {static: false, read: ElementRef}) checkboxElement: ElementRef;
   @ViewChild("myList") myList;
   constructor(
@@ -53,13 +54,15 @@ export class HomePage {
       // this.myList.setFocus();
     }, 350);
   }
-  async presentAlert(item: []) {
+  async presentAlert(item) {
+    this.itemsToDo = this.items.filter((item) => item.title === null);
+    var mstFin = await this.storageService.getMsg(item);
     const alert = await this.alertCtrl.create({
       cssClass: "my-custom-class",
       header: "Glückwunsch!",
 
       // subHeader: 'Subtitle',
-      message: "Dies ist dein erster erledigter Task! Weiter so :)",
+      message: mstFin,
 
       buttons: [
         {
@@ -84,14 +87,34 @@ export class HomePage {
 
   itemChecked($event: CustomEvent, title: []) {
     this.presentAlert(title);
-    this.deleteListItem(title);
     this.loadItems();
     console.log("checked item", title);
   }
+
   async getAvatarInfo(): Promise<any> {
     this.avatarInfo = await this.avatarService.getAvatar();
     console.log("avatar.info", this.avatarInfo);
   }
+
+  generateMsg() {
+    let aMsg = [
+      "heftiger Typ",
+      "du schlauer Fuchs",
+      "nice Job bro",
+      "juhu und noch einer",
+      "ausgezeichnet",
+      "bam bam bam",
+      "weiter, immer weiter gehts",
+      "perfekt",
+      "Ran an die Mäuse, nice",
+      "tip top",
+      "und noch einer für die Statistik"
+    ]
+    let rando = Math.floor(Math.random() * aMsg.length);
+
+    return aMsg[rando];
+  }
+
   async addItem(input: string) {
     const today = new Date();
     console.log("addItem() is called");
@@ -108,6 +131,7 @@ export class HomePage {
     this.newItem.title = input;
     this.newItem.value = null;
     this.newItem.finishedAt = null;
+    this.newItem.msgFin = this.generateMsg();
     this.newItem.priority = null;
     this.newItem.createdAt = today.toLocaleDateString();
 
@@ -129,7 +153,8 @@ export class HomePage {
   //     this.loadItems();
   //   });
   // }
-  loadItems() {
+  async loadItems() {
+    const alert  = await this.storageService.getItems();
     this.storageService.getItems().then((items) => {
       this.items = items;
       console.log("All items", this.items);
@@ -137,6 +162,7 @@ export class HomePage {
       this.itemsToDo = this.items.filter((item) => item.finishedAt === null);
       console.log("this.itemsToDo", this.itemsToDo);
     });
+    this.money = await this.storageService.getMoney();
     return this.itemsToDo;
   }
 
@@ -156,6 +182,7 @@ export class HomePage {
     // item.finishedAt = this.today.toLocaleDateString();
     const todaysDate = this.today.toLocaleDateString();
     await this.storageService.updateItem(item, "finishedAt", todaysDate);
+    this.storageService.setMoney("incMoney", 1);
     this.loadItems();
 
     //this.storageService.deleteItem(item);

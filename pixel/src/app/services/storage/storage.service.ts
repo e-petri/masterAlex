@@ -23,52 +23,104 @@ export class StorageService {
         {
           id: "00",
           cntID: 100,
+          cntMoney: 0,
         },
         {
-          id: "01",
-          title: "Aufgabe 01",
-          value: "Aufgabe value 01",
+          id: 50,
+          title: "Klicke mich",
+          value: null,
           modified: 1,
           createdAt: "11.9.2020",
           finishedAt: null,
+          msgFin: "Toller erster Job",
           priority: null,
         },
         {
-          id: "02",
-          title: "Aufgabe 02",
-          value: "Aufgabe value 02",
+          id: 51,
+          title: "Wische mich nach links",
+          value: null,
           modified: 1,
           createdAt: "10.9.2020",
+          finishedAt: null,
+          msgFin: "Super jetzt kannst du löschen",
+          priority: null,
+        },
+        {
+          id: 52,
+          title: "Finde die Statistiken",
+          value: null,
+          modified: 1,
+          createdAt: "13.9.2020",
+          msgFin: "Deine Statistik ist schon toll",
           finishedAt: null,
           priority: null,
         },
         {
-          id: "03",
-          title: "Aufgabe 03",
-          value: "Aufgabe value 03",
+          id: 53,
+          title: "Finde die Fantasy League",
+          value: null,
           modified: 1,
-          createdAt: "13.9.2020",
+          createdAt: "09.9.2020",
+          msgFin: "Besiege deine Gegner!",
+          finishedAt: null,
+          priority: null,
+        },
+        {
+          id: 54,
+          title: "Ändere dein Avatar",
+          value: null,
+          modified: 1,
+          createdAt: "07.9.2020",
+          msgFin: "Hübsch siehst du aus :)",
+          finishedAt: null,
+          priority: null,
+        },
+        {
+          id: 55,
+          title: "Gib deine Mäuse aus",
+          value: null,
+          modified: 1,
+          createdAt: "27.9.2020",
+          msgFin: "Money money!!!",
+          finishedAt: null,
+          priority: null,
+        },
+        {
+          id: 56,
+          title: "Platzhalter",
+          value: null,
+          modified: 1,
+          createdAt: "27.9.2020",
           finishedAt: "27.9.2020",
           priority: null,
         },
         {
-          id: "04",
-          title: "Aufgabe 04",
-          value: "Aufgabe value 04",
+          id: 57,
+          title: "Platzhalter",
+          value: null,
           modified: 1,
-          createdAt: "09.9.2020",
-          finishedAt: "26.9.2020",
-          priority: null,
-        },
-        {
-          id: "05",
-          title: "Aufgabe 05",
-          value: "Aufgabe value 05",
-          modified: 1,
-          createdAt: "07.9.2020",
+          createdAt: "22.9.2020",
           finishedAt: "24.9.2020",
           priority: null,
         },
+        {
+          id: 58,
+          title: "Platzhalter",
+          value: null,
+          modified: 1,
+          createdAt: "22.9.2020",
+          finishedAt: "29.9.2020",
+          priority: null,
+        },
+        {
+          id: 58,
+          title: "Platzhalter",
+          value: null,
+          modified: 1,
+          createdAt: "22.9.2020",
+          finishedAt: "27.9.2020",
+          priority: null,
+        }
       ];
       this.storage.set(ITEMS_KEY, this.items);
       storageData = await this.storage.get(ITEMS_KEY);
@@ -94,7 +146,6 @@ export class StorageService {
     if (this.items) {
       // console.log("items: ", this.items, " item", item);
       storageData.push(item);
-      // let a = this.storage.get(ITEMS_KEY);
       return this.storage.set(ITEMS_KEY, storageData);
       // a = this.storage.get(ITEMS_KEY);
     } else {
@@ -120,7 +171,7 @@ export class StorageService {
     
     if(attribute === "finishedAt")
       tempStorage[index].finishedAt = newValue;
-    
+
     //const array1 = [5, 12, 8, 130, 44];
     //const isLargeNumber = (element) => element > 13;
     //console.log(array1.findIndex(isLargeNumber));
@@ -205,6 +256,32 @@ export class StorageService {
   newArray(newArray) {
     this.storage.set(ITEMS_KEY, newArray);
   }
+
+  async getMoney() {
+    var storageData = await this.storage.get(ITEMS_KEY);
+    return storageData[0].cntMoney;
+  }
+
+  async setMoney(typeoperator: string, value: any) {
+    var storageData = await this.storage.get(ITEMS_KEY);
+
+    if(typeoperator === "incMoney")
+      storageData[0].cntMoney++;
+
+    return this.storage.set(ITEMS_KEY, storageData);
+  }
+
+  async getMsg(inputItem: Item) {
+    var storageData = await this.storage.get(ITEMS_KEY);
+    
+    //find index of ID
+    var tempStorage = storageData;
+    const isID = (element) => element.id === inputItem.id;
+    var index = tempStorage.findIndex(isID);
+    
+    return tempStorage[index].msgFin;
+  }
+
   // async getStorageValues(): Promise<any> {
   //   return JSON.parse(await this.storage.get(ITEMS_KEY));
   // }
