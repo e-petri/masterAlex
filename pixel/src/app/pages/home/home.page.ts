@@ -232,6 +232,8 @@ export class HomePage {
       this.navCtrl.navigateForward("/home");
     } else if (pageName === "fantasyleague") {
       this.navCtrl.navigateForward("/fantasyleague");
+    } else if (pageName === "store") {
+      this.navCtrl.navigateForward("/store");
     }
   }
 

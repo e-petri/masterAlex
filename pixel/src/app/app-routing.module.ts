@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'fantasyleague',
     loadChildren: () => import('./fantasyleague/fantasyleague.module').then( m => m.FantasyleaguePageModule)
   },
+  {
+    path: 'store',
+    loadChildren: () => import('./store/store.module').then( m => m.StorePageModule)
+  },
 
 ];
 

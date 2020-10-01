@@ -1,11 +1,11 @@
 
   <ion-menu side="start" menuId="custom" contentId="main"class="my-custom-menu">
     <ion-header>
-      <div class="header">
+      <div class="header headerNav">
         <ion-buttons slot="start">
           <ion-menu-button autoHide="false" color="light"></ion-menu-button>
         </ion-buttons>
-        <div class="header__greeting">{{today | date: 'dd/MM/yyyy'}}</div>
+        <!--<div class="header__greeting">{{today | date: 'dd/MM/yyyy'}}</div>-->
       </div>
     
     </ion-header>
@@ -15,6 +15,7 @@
       <ion-item (click)="navToPage('statistic')">Statistik</ion-item>
       <ion-item (click)="navToPage('fantasyleague')">Fantasy League</ion-item>
       <ion-item >Avatar</ion-item>
+      <ion-item (click)="navToPage('store')">Marktplatz</ion-item>
       <ion-item >Einstellungen</ion-item>
 
     </ion-list>
@@ -28,7 +29,7 @@
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false" color="light"></ion-menu-button>
     </ion-buttons>
-    <div class="header__greeting"><span>Welcome</span><span>Alex!</span><span>Mäuse: {{money}}</span></div>
+    <div class="header__greeting"><span>TASKFOX</span><span>Mäuse: {{money}}</span></div>
   
   </div>
 
@@ -41,15 +42,14 @@
 
 
 <ion-content [fullscreen]="true">
-
   <ion-content padding>
     <ion-item>
-      <ion-input [(ngModel)]="newItem.value" placeholder="Enter task">
+      <ion-input [(ngModel)]="newItem.value" placeholder="Enter task" size="default">
         <!-- #taskInput -->
         <div class="item-note" item-end></div
       ></ion-input>
       <div class="item-note" item-end>
-        <ion-button (click)="addItem(newItem.value)" color="medium">Add Task</ion-button>
+        <ion-button (click)="addItem(newItem.value)" size="default" color="medium">Add Task</ion-button>
       </div>
     </ion-item>
     <div>

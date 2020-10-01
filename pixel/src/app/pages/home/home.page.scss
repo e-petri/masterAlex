@@ -1,19 +1,19 @@
 
 .header{
   height:30vh;
-  background-color: #282828;
+  background-color: #1F2833;
   &__greeting{
     // splits welcome and user name into two lines
     span::before {content: '\A'; white-space: pre;}
     font-size: 28px;
-    color: #f0f0f0;
+    color: #66FCF1;
     position: relative;
     left:0;
-    margin: 10px;
+    margin: 28px;
     text-align: left;
+  }
+}
 
-  }}
-
-.listItemLabel{
-  color: #323232;
+.headerNav{
+  background-color: #1F2833;
 }
