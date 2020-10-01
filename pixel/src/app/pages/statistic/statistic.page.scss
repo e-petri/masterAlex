@@ -7,14 +7,13 @@
   &__greeting{
     // splits welcome and user name into two lines
     span::before {content: '\A'; white-space: pre;}
-    font-size: 28px;
+    font-size: 35px;
     color: #f3f2f0;
-    position: relative;
-    left:0;
-    margin: 28px;
-    text-align: left;
+    text-align: center;
+    margin-top: 30px;
   }
 }
+
 
 .headerNav{
   background-image: none;
@@ -22,14 +21,27 @@
 }
 
 .imgFox {
-  float:right;
-  margin-right:30px;
-  margin-top: 30px;
-  width: 170px;
+  padding-top: 30px;
+  padding-left: 25%;
+  height: 22vh;
 }
 
 .imgMice {
-  width: 20px;
+  margin: auto;
+  width: 40px;
+}
+
+.headerMoney {
+  color: #EEEDE9;
+  margin: auto;
+  font-size: 18px;
+}
+
+.titleSpan {
+  color: #EEEDE9;
+  margin: auto;
+  width: 80%;
+  font-size: 18px;
 }
 
 ion-checkbox {

@@ -1,25 +1,26 @@
-<ion-menu side="start" menuId="custom" contentId="main"class="my-custom-menu">
-  <ion-header>
-    <div class="header headerNav">
-      <ion-buttons slot="start">
-        <ion-menu-button autoHide="false" color="light"></ion-menu-button>
-      </ion-buttons>
-      <!--<div class="header__greeting">{{today | date: 'dd/MM/yyyy'}}</div>-->
-    </div>
-  
-  </ion-header>
-<ion-content>
-  <ion-list>
-    <ion-item (click)="navToPage('home')"> Home </ion-item>
-    <ion-item (click)="navToPage('statistic')">Statistik</ion-item>
-    <ion-item (click)="navToPage('fantasyleague')">Fantasy League</ion-item>
-    <ion-item (click)="navToPage('avatar-setting')">Avatar</ion-item>
-    <ion-item (click)="navToPage('store')">Marktplatz</ion-item>
-    <ion-item >Einstellungen</ion-item>
 
-  </ion-list>
-</ion-content>
-</ion-menu>
+  <ion-menu side="start" menuId="custom" contentId="main"class="my-custom-menu">
+    <ion-header>
+      <div class="header headerNav">
+        <ion-buttons slot="start">
+          <ion-menu-button autoHide="false" color="light"></ion-menu-button>
+        </ion-buttons>
+        <!--<div class="header__greeting">{{today | date: 'dd/MM/yyyy'}}</div>-->
+      </div>
+    
+    </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item (click)="navToPage('home')"> Home </ion-item>
+      <ion-item (click)="navToPage('statistic')">Statistik</ion-item>
+      <ion-item (click)="navToPage('fantasyleague')">Fantasy League</ion-item>
+      <ion-item (click)="navToPage('avatar-setting')">Avatar</ion-item>
+      <ion-item (click)="navToPage('store')">Marktplatz</ion-item>
+      <ion-item >Einstellungen</ion-item>
+
+    </ion-list>
+  </ion-content>
+  </ion-menu>
 <ion-router-outlet id="main" ></ion-router-outlet>
 
 
@@ -28,7 +29,7 @@
   <ion-buttons slot="start">
     <ion-menu-button autoHide="false" color="light"></ion-menu-button>
   </ion-buttons>
-  <div class="header__greeting"><span>TASKFOX</span><span>Mäuse: {{money}}</span></div>
+  <div class="header__greeting"><span>Marktplatz</span></div>
 
 </div>
 

@@ -28,9 +28,10 @@ export class StorePage implements OnInit {
       this.navCtrl.navigateRoot("/home");
     } else if (pageName === "fantasyleague") {
       this.navCtrl.navigateRoot("/fantasyleague");
-    }
-    else if (pageName === "store") {
+    } else if (pageName === "store") {
       this.navCtrl.navigateRoot("/store");
+    } else if (pageName === "avatar-setting") {
+      this.navCtrl.navigateRoot("/avatar-setting");
     }
   }
 }
