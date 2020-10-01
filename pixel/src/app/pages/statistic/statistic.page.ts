@@ -177,11 +177,11 @@ export class StatisticPage implements OnInit {
   }
   navToPage(pageName: string) {
     if (pageName === "statistic") {
-      this.navCtrl.navigateForward("/statistic");
+      this.navCtrl.navigateRoot("/statistic");
     } else if (pageName === "home") {
-      this.navCtrl.navigateForward("/home");
+      this.navCtrl.navigateRoot("/home");
     } else if (pageName === "fantasyleague") {
-      this.navCtrl.navigateForward("/fantasyleague");
+      this.navCtrl.navigateRoot("/fantasyleague");
     }
   }
   async dataForChart() {
