@@ -32,6 +32,7 @@ export class HomePage {
   itemsToDo: Item[];
   avatarInfo;
   money = 0;
+  foxPath = null;
   // @ViewChild("checkboxElement", {static: false, read: ElementRef}) checkboxElement: ElementRef;
   @ViewChild("myList") myList;
   constructor(
@@ -46,8 +47,8 @@ export class HomePage {
     this.plt.ready().then(() => {
       this.loadItems();
     });
-    this.getAvatarInfo();
-    console.log("date today", this.today.toLocaleDateString());
+    //this.getAvatarInfo();
+    //console.log("date today", this.today.toLocaleDateString());
   }
   ionViewDidLoad() {
     setTimeout(() => {
@@ -91,10 +92,10 @@ export class HomePage {
     console.log("checked item", title);
   }
 
-  async getAvatarInfo(): Promise<any> {
+  /*async getAvatarInfo(): Promise<any> {
     this.avatarInfo = await this.avatarService.getAvatar();
     console.log("avatar.info", this.avatarInfo);
-  }
+  }*/
 
   generateMsg() {
     let aMsg = [
@@ -153,6 +154,18 @@ export class HomePage {
   //     this.loadItems();
   //   });
   // }
+  setFoxPath(foxNr) {
+    if(foxNr === 0)
+      this.foxPath = "../../../assets/icon/Fox0.png";
+    else if(foxNr === 1)
+      this.foxPath = "../../../assets/icon/Fox1.png";
+    else if(foxNr === 2)
+      this.foxPath = "../../../assets/icon/Fox2.png";
+    else
+      this.foxPath = "../../../assets/icon/Fox0.png";
+    return this.itemsToDo;
+  }
+
   async loadItems() {
     const alert  = await this.storageService.getItems();
     this.storageService.getItems().then((items) => {
@@ -163,7 +176,9 @@ export class HomePage {
       console.log("this.itemsToDo", this.itemsToDo);
     });
     this.money = await this.storageService.getMoney();
-    return this.itemsToDo;
+
+    let foxNr = await this.storageService.getFoxNr();
+    this.setFoxPath(foxNr);
   }
 
   async deleteItem(item) {
@@ -234,6 +249,8 @@ export class HomePage {
       this.navCtrl.navigateForward("/fantasyleague");
     } else if (pageName === "store") {
       this.navCtrl.navigateForward("/store");
+    } else if (pageName === "avatar-setting") {
+      this.navCtrl.navigateForward("/avatar-setting");
     }
   }
 

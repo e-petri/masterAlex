@@ -1,0 +1,54 @@
+
+.header{
+    height:30vh;
+    background-image: url("../../assets/Background1cut.png");
+    background-size: cover;
+    background-color: #646361;
+    &__greeting{
+      // splits welcome and user name into two lines
+      span::before {content: '\A'; white-space: pre;}
+      font-size: 28px;
+      color: #f3f2f0;
+      position: relative;
+      left:0;
+      margin: 28px;
+      text-align: left;
+    }
+  }
+  
+  .headerNav{
+    background-image: none;
+    background-color: #D9762E;
+  }
+  
+  .imgFox {
+    padding-top: 30px;
+    padding-left: 25%;
+    height: 22vh;
+  }
+  
+  .imgMice {
+    margin: auto;
+    width: 40px;
+  }
+  
+  .headerMoney {
+    color: #EEEDE9;
+    margin: auto;
+    font-size: 18px;
+  }
+  
+  .titleSpan {
+    color: #EEEDE9;
+    margin: auto;
+    width: 80%;
+    font-size: 18px;
+  }
+  
+  ion-checkbox {
+    --background: #EEEDE9;
+  }
+  
+  ion-item {
+    --color: #524F49;
+  }

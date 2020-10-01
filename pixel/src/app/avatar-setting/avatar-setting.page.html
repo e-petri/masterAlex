@@ -29,34 +29,33 @@
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false" color="light"></ion-menu-button>
     </ion-buttons>
-    <div class="header__greeting"><span>Statistik</span></div>
+    <img class="imgFox" src={{foxPath}} alt="Description"/>
   
   </div>
 
 </ion-header> 
 
-
-<ion-content [fullscreen]="true">
-  <ion-content padding>
-    <ion-card>
-    <ion-badge color="light">Gesamt: {{countStorageData}}</ion-badge>
-    <ion-badge color="medium">Offen: {{unfinishedStorageData}}</ion-badge>
-    <ion-badge color="dark">Fertig: {{doneStorageData}}</ion-badge>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      Statistik erlediger Tasks
-    </ion-card-header>
-    <ion-card-content>
-      <!-- <canvas #lineCanvas></canvas> -->
-      <canvas id="line-chart" width="800" height="750"></canvas>
-       <!-- <canvas  #lineCanvas id="mixed-chart" width="800" height="450"></canvas> -->
-    </ion-card-content>
-  </ion-card>
+<ion-content>
+  <ion-list>
+    <ion-radio-group value="{{startFox}}">
+      <ion-list-header>
+        <ion-label>Avatar</ion-label>
+      </ion-list-header>
   
-<!-- <script src="./myChart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+      <ion-item>
+        <ion-label>Junger Noob</ion-label>
+        <ion-radio (click)="foxAvatar(0)" slot="start" value="0"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Harry Propper</ion-label>
+        <ion-radio (click)="foxAvatar(1)" color="danger" slot="start" value="1"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Flower Power</ion-label>
+        <ion-radio (click)="foxAvatar(2)" color="success" disabled="{{activeFlowerPower}}" slot="start" value="2"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
 </ion-content>
-</ion-content> 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> -->

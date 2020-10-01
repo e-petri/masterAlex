@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'store',
     loadChildren: () => import('./store/store.module').then( m => m.StorePageModule)
   },
+  {
+    path: 'avatar-setting',
+    loadChildren: () => import('./avatar-setting/avatar-setting.module').then( m => m.AvatarSettingPageModule)
+  },
 
 ];
 

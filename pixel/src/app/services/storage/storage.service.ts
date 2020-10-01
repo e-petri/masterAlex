@@ -24,6 +24,7 @@ export class StorageService {
           id: "00",
           cntID: 100,
           cntMoney: 0,
+          avatarNr: 1,
         },
         {
           id: 50,
@@ -280,6 +281,19 @@ export class StorageService {
     var index = tempStorage.findIndex(isID);
     
     return tempStorage[index].msgFin;
+  }
+
+  async getFoxNr() {
+    var storageData = await this.storage.get(ITEMS_KEY);
+    return storageData[0].avatarNr;
+  }
+
+  async setFoxNr(foxNr) {
+    var storageData = await this.storage.get(ITEMS_KEY);
+
+    storageData[0].avatarNr = foxNr;
+
+    return this.storage.set(ITEMS_KEY, storageData);
   }
 
   // async getStorageValues(): Promise<any> {

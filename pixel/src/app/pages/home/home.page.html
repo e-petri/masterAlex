@@ -14,7 +14,7 @@
       <ion-item (click)="navToPage('home')"> Home </ion-item>
       <ion-item (click)="navToPage('statistic')">Statistik</ion-item>
       <ion-item (click)="navToPage('fantasyleague')">Fantasy League</ion-item>
-      <ion-item >Avatar</ion-item>
+      <ion-item (click)="navToPage('avatar-setting')">Avatar</ion-item>
       <ion-item (click)="navToPage('store')">Marktplatz</ion-item>
       <ion-item >Einstellungen</ion-item>
 
@@ -23,13 +23,23 @@
   </ion-menu>
 <ion-router-outlet id="main" ></ion-router-outlet>
 
-
 <ion-header>
   <div class="header">
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false" color="light"></ion-menu-button>
-    </ion-buttons>
-    <div class="header__greeting"><span>TASKFOX</span><span>Mäuse: {{money}}</span></div>
+      <div class="titleSpan">TASKFOX</div>
+      <div class="headerMoney">{{money}}</div>
+      <img class="imgMice" src="../../../assets/icon/Maus1.png" alt="Description"/>  
+      
+    </ion-buttons> 
+    
+    <img class="imgFox" src={{foxPath}} alt="Description"/>
+    <!--<div class="header__greeting">
+      
+      <span>
+        
+      </span>
+    </div>-->
   
   </div>
 

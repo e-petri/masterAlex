@@ -1,19 +1,41 @@
 
 .header{
-    height:30vh;
-    background-color: #282828;
-    &__greeting{
-      // splits welcome and user name into two lines
-      span::before {content: '\A'; white-space: pre;}
-      font-size: 28px;
-      color: #f0f0f0;
-      position: relative;
-      left:0;
-      margin: 10px;
-      text-align: left;
-  
-    }}
-  
-  .listItemLabel{
-    color: #323232;
+  height:30vh;
+  background-image: url("../../assets/Background1cut.png");
+  background-size: cover;
+  background-color: #646361;
+  &__greeting{
+    // splits welcome and user name into two lines
+    span::before {content: '\A'; white-space: pre;}
+    font-size: 28px;
+    color: #f3f2f0;
+    position: relative;
+    left:0;
+    margin: 28px;
+    text-align: left;
   }
+}
+
+.headerNav{
+  background-image: none;
+  background-color: #D9762E;
+}
+
+.imgFox {
+  float:right;
+  margin-right:30px;
+  margin-top: 30px;
+  width: 170px;
+}
+
+.imgMice {
+  width: 20px;
+}
+
+ion-checkbox {
+  --background: #EEEDE9;
+}
+
+ion-item {
+  --color: #524F49;
+}
