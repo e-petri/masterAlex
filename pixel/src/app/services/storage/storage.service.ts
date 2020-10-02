@@ -24,7 +24,7 @@ export class StorageService {
           id: "00",
           cntID: 100,
           cntMoney: 0,
-          avatarNr: 1,
+          avatarNr: 0,
         },
         {
           id: 50,

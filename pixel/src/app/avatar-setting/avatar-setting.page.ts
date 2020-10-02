@@ -51,6 +51,12 @@ export class AvatarSettingPage implements OnInit {
       this.foxPath = "../../../assets/icon/Fox1.png";
     else if(foxNr === 2)
       this.foxPath = "../../../assets/icon/Fox2.png";
+    else if(foxNr === 3)
+      this.foxPath = "../../../assets/icon/Fox3.png";
+    else if(foxNr === 4)
+      this.foxPath = "../../../assets/icon/Fox4.png";
+    else if(foxNr === 5)
+      this.foxPath = "../../../assets/icon/Fox5.png";
     else
       this.foxPath = "../../../assets/icon/Fox0.png";
   }

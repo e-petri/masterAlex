@@ -1,13 +1,14 @@
 
 .header{
-  height:30vh;
+  min-height: 30vh;
+  max-height:31vh;
   background-image: url("../../../assets/Background1cut.png");
   background-size: cover;
   background-color: #646361;
   &__greeting{
     // splits welcome and user name into two lines
     span::before {content: '\A'; white-space: pre;}
-    font-size: 28px;
+    font-size: 25px;
     color: #f3f2f0;
     position: relative;
     left:0;
@@ -19,10 +20,12 @@
 .headerNav{
   background-image: none;
   background-color: #D9762E;
+  min-height: 30vh;
+  max-height:31vh;
 }
 
 .imgFox {
-  height: 22vh;
+  max-height: 24vh;
   width: auto;
   margin: auto;
   display: block;

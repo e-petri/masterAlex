@@ -43,7 +43,7 @@
       </ion-list-header>
   
       <ion-item>
-        <ion-label>Junger Noob</ion-label>
+        <ion-label>Junger Padawan</ion-label>
         <ion-radio (click)="foxAvatar(0)" slot="start" value="0"></ion-radio>
       </ion-item>
   
@@ -55,6 +55,21 @@
       <ion-item>
         <ion-label>Flower Power</ion-label>
         <ion-radio (click)="foxAvatar(2)" color="success" disabled="{{activeFlowerPower}}" slot="start" value="2"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Prinzessin Fox</ion-label>
+        <ion-radio (click)="foxAvatar(3)" color="medium" disabled="false" slot="start" value="3"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Space Invader</ion-label>
+        <ion-radio (click)="foxAvatar(4)" color="warning" disabled="false" slot="start" value="4"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Foxy Holmes</ion-label>
+        <ion-radio (click)="foxAvatar(5)" color="secendary" disabled="false" slot="start" value="5"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>
