@@ -22,9 +22,10 @@
 }
 
 .imgFox {
-  padding-top: 30px;
-  padding-left: 25%;
   height: 22vh;
+  width: auto;
+  margin: auto;
+  display: block;
 }
 
 .imgMice {
@@ -45,10 +46,18 @@
   font-size: 18px;
 }
 
+.listItemLabel {
+  margin-left: 5px;
+}
+
 ion-checkbox {
   --background: #EEEDE9;
 }
 
 ion-item {
   --color: #524F49;
+}
+
+ion-checkbox {
+  --background: #EEEDE9;
 }

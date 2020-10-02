@@ -75,12 +75,12 @@
           <ion-item-sliding>
             <!-- [(ngModel)]="item.isChecked" -->
             <ion-item>
-              <ion-checkbox color="primary" 
+              <ion-checkbox mode="ios" 
               (ionChange)="itemChecked($event, item)" 
               ></ion-checkbox>
               <!-- color change of the border checkbox 
               style=" --border-color: green;" -->
-              <ion-label class="listItemLabel">
+              <ion-label>
                 {{item.title}} {{item.value}}</ion-label
               >
             </ion-item>
