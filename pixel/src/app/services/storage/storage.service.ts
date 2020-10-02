@@ -21,16 +21,40 @@ export class StorageService {
       //   // dummy data
       this.items = [
         {
-          id: "00",
+          id: 0,
           cntID: 100,
           cntMoney: 0,
           avatarNr: 0,
         },
         {
+          id: 12,
+          title: "Fox2",
+          value: 10,
+          modified: true,
+        },
+        {
+          id: 13,
+          title: "Fox3",
+          value: 20,
+          modified: true,
+        },
+        {
+          id: 14,
+          title: "Fox4",
+          value: 30,
+          modified: true,
+        },
+        {
+          id: 15,
+          title: "Fox5",
+          value: 30,
+          modified: true,
+        },
+        {
           id: 50,
           title: "Klicke mich",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "11.9.2020",
           finishedAt: null,
           msgFin: "Toller erster Job",
@@ -40,7 +64,7 @@ export class StorageService {
           id: 51,
           title: "Wische mich nach links",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "10.9.2020",
           finishedAt: null,
           msgFin: "Super jetzt kannst du löschen",
@@ -50,7 +74,7 @@ export class StorageService {
           id: 52,
           title: "Finde die Statistiken",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "13.9.2020",
           msgFin: "Deine Statistik ist schon toll",
           finishedAt: null,
@@ -60,7 +84,7 @@ export class StorageService {
           id: 53,
           title: "Finde die Fantasy League",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "09.9.2020",
           msgFin: "Besiege deine Gegner!",
           finishedAt: null,
@@ -70,7 +94,7 @@ export class StorageService {
           id: 54,
           title: "Ändere dein Avatar",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "07.9.2020",
           msgFin: "Hübsch siehst du aus :)",
           finishedAt: null,
@@ -80,7 +104,7 @@ export class StorageService {
           id: 55,
           title: "Gib deine Mäuse aus",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "27.9.2020",
           msgFin: "Money money!!!",
           finishedAt: null,
@@ -90,7 +114,7 @@ export class StorageService {
           id: 56,
           title: "Platzhalter",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "27.9.2020",
           finishedAt: "27.9.2020",
           priority: null,
@@ -99,7 +123,7 @@ export class StorageService {
           id: 57,
           title: "Platzhalter",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "22.9.2020",
           finishedAt: "24.9.2020",
           priority: null,
@@ -108,7 +132,7 @@ export class StorageService {
           id: 58,
           title: "Platzhalter",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "22.9.2020",
           finishedAt: "29.9.2020",
           priority: null,
@@ -117,7 +141,7 @@ export class StorageService {
           id: 58,
           title: "Platzhalter",
           value: null,
-          modified: 1,
+          modified: false,
           createdAt: "22.9.2020",
           finishedAt: "27.9.2020",
           priority: null,
@@ -266,8 +290,10 @@ export class StorageService {
   async setMoney(typeoperator: string, value: any) {
     var storageData = await this.storage.get(ITEMS_KEY);
 
-    if(typeoperator === "incMoney")
+    if (typeoperator === "incMoney")
       storageData[0].cntMoney++;
+    else if (typeoperator === "subMoney")
+      storageData[0].cntMoney -= value;
 
     return this.storage.set(ITEMS_KEY, storageData);
   }
@@ -286,6 +312,30 @@ export class StorageService {
   async getFoxNr() {
     var storageData = await this.storage.get(ITEMS_KEY);
     return storageData[0].avatarNr;
+  }
+
+  async setFoxStatus(nr) {
+    let FoxNr = 10+nr;
+    var storageData = await this.storage.get(ITEMS_KEY);
+    
+    //find index of ID
+    var tempStorage = storageData;
+    const isID = (element) => element.id === FoxNr;
+    var index = tempStorage.findIndex(isID);
+    tempStorage[index].modified = false;
+    return this.storage.set(ITEMS_KEY, storageData);
+  }
+
+
+  async getFoxStatus(nr) {
+    let FoxNr = 10+nr;
+    var storageData = await this.storage.get(ITEMS_KEY);
+    
+    //find index of ID
+    var tempStorage = storageData;
+    const isID = (element) => element.id === FoxNr;
+    var index = tempStorage.findIndex(isID);
+    return tempStorage[index].modified;
   }
 
   async setFoxNr(foxNr) {

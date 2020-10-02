@@ -16,18 +16,37 @@ import { StorageService } from '../services/storage/storage.service';
 export class AvatarSettingPage implements OnInit {
   foxPath = "../../../assets/icon/Fox1.png";
   startFox = null;
-  activeFlowerPower: Boolean;
+  activeFox2: Boolean;
+  activeFox3: Boolean;
+  activeFox4: Boolean;
+  activeFox5: Boolean;
   constructor(
     public navCtrl: NavController,
     public storageService: StorageService,
   ) {
-    this.activeFlowerPower = true;
+    this.activeFox2 = true;
+    this.activeFox3 = true;
+    this.activeFox4 = true;
+    this.activeFox5 = true;
+  }
+
+  async setFoxStatus() {
+    let aStatus = [false, false, false, false];
+    for(let i = 2; i < 6; i++)
+      aStatus[i] = await this.storageService.getFoxStatus(i);
+
+    this.activeFox2 = aStatus[2];
+    this.activeFox3 = aStatus[3];
+    this.activeFox4 = aStatus[4];
+    this.activeFox5 = aStatus[5];
+    console.log("setFoxStatusRdy")
   }
 
   async ngOnInit() {
     let foxNr = await this.storageService.getFoxNr();
     this.startFox = foxNr;
     this.setFoxPath(foxNr);
+    await this.setFoxStatus();
   }
 
   navToPage(pageName: string) {
@@ -64,5 +83,6 @@ export class AvatarSettingPage implements OnInit {
   async foxAvatar(value: any) {
     this.storageService.setFoxNr(value);
     this.setFoxPath(value);
+    await this.setFoxStatus();
   }
 }

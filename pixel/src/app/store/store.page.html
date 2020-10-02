@@ -30,6 +30,10 @@
     <ion-menu-button autoHide="false" color="light"></ion-menu-button>
   </ion-buttons>
   <div class="header__greeting"><span>Marktplatz</span></div>
+  <div class="headerMoney">
+    Deine Mäuse: {{money}}
+    <img class="imgMice" src="../../assets/icon/Maus1.png" alt="Description"/> 
+  </div>
 
 </div>
 
@@ -42,12 +46,22 @@
   <ion-list-header>
     Avatar
   </ion-list-header>
-  <ion-item>
+  <ion-item disabled="false">
     <ion-avatar slot="start">
       <ion-img src="../../assets/icon/Fox2icon.png"></ion-img>
     </ion-avatar>
     <ion-label>Flower Power</ion-label>
-    <ion-button size="small" color="medium">
+    <ion-button (click)="foxAvatar(2, 10)" size="small" color="medium" disabled="{{activeFox2}}">
+      10 Mäuse
+      <ion-icon slot="end" name="cart"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-avatar slot="start">
+      <ion-img src="../../assets/icon/Fox5icon.png"></ion-img>
+    </ion-avatar>
+    <ion-label>Foxy Holmes</ion-label>
+    <ion-button (click)="foxAvatar(5, 10)"  size="small" color="medium" disabled="{{activeFox5}}">
       10 Mäuse
       <ion-icon slot="end" name="cart"></ion-icon>
     </ion-button>
@@ -57,7 +71,7 @@
       <ion-img src="../../assets/icon/Fox3icon.png"></ion-img>
     </ion-avatar>
     <ion-label>Prinzessin Fox</ion-label>
-    <ion-button size="small" color="medium">
+    <ion-button (click)="foxAvatar(3, 20)" size="small" color="medium" disabled="{{activeFox3}}">
       20 Mäuse
       <ion-icon slot="end" name="cart"></ion-icon>
     </ion-button>
@@ -67,17 +81,7 @@
       <ion-img src="../../assets/icon/Fox4icon.png"></ion-img>
     </ion-avatar>
     <ion-label>Space Invader</ion-label>
-    <ion-button size="small" color="medium">
-      50 Mäuse
-      <ion-icon slot="end" name="cart"></ion-icon>
-    </ion-button>
-  </ion-item>
-  <ion-item>
-    <ion-avatar slot="start">
-      <ion-img src="../../assets/icon/Fox5icon.png"></ion-img>
-    </ion-avatar>
-    <ion-label>Foxy Holmes</ion-label>
-    <ion-button size="small" color="medium">
+    <ion-button (click)="foxAvatar(4, 50)" size="small" color="medium" disabled="{{activeFox4}}">
       50 Mäuse
       <ion-icon slot="end" name="cart"></ion-icon>
     </ion-button>

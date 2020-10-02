@@ -16,7 +16,7 @@
       <ion-item (click)="navToPage('fantasyleague')">Fantasy League</ion-item>
       <ion-item (click)="navToPage('avatar-setting')">Avatar</ion-item>
       <ion-item (click)="navToPage('store')">Marktplatz</ion-item>
-      <ion-item >Einstellungen</ion-item>
+      <!--<ion-item >Einstellungen</ion-item>-->
 
     </ion-list>
   </ion-content>
@@ -30,32 +30,15 @@
       <div class="titleSpan">TASKFOX</div>
       <div class="headerMoney">{{money}}</div>
       <img class="imgMice" src="../../../assets/icon/Maus1.png" alt="Description"/>  
-      
     </ion-buttons> 
-    
     <img class="imgFox" src={{foxPath}} alt="Description"/>
-    <!--<div class="header__greeting">
-      
-      <span>
-        
-      </span>
-    </div>-->
-  
   </div>
-
 </ion-header> 
-
-
-
-
-
-
 
 <ion-content [fullscreen]="true">
   <ion-content padding>
     <ion-item>
       <ion-input [(ngModel)]="newItem.value" placeholder="Enter task" size="default">
-        <!-- #taskInput -->
         <div class="item-note" item-end></div
       ></ion-input>
       <div class="item-note" item-end>

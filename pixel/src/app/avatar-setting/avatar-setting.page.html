@@ -54,22 +54,22 @@
   
       <ion-item>
         <ion-label>Flower Power</ion-label>
-        <ion-radio (click)="foxAvatar(2)" color="success" disabled="{{activeFlowerPower}}" slot="start" value="2"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Prinzessin Fox</ion-label>
-        <ion-radio (click)="foxAvatar(3)" color="medium" disabled="false" slot="start" value="3"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Space Invader</ion-label>
-        <ion-radio (click)="foxAvatar(4)" color="warning" disabled="false" slot="start" value="4"></ion-radio>
+        <ion-radio (click)="foxAvatar(2)" color="success" disabled="{{activeFox2}}" slot="start" value="2"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Foxy Holmes</ion-label>
-        <ion-radio (click)="foxAvatar(5)" color="secendary" disabled="false" slot="start" value="5"></ion-radio>
+        <ion-radio (click)="foxAvatar(5)" color="secendary" disabled="{{activeFox5}}" slot="start" value="5"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Prinzessin Fox</ion-label>
+        <ion-radio (click)="foxAvatar(3)" color="medium" disabled="{{activeFox3}}" slot="start" value="3"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Space Invader</ion-label>
+        <ion-radio (click)="foxAvatar(4)" color="warning" disabled="{{activeFox4}}" slot="start" value="4"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>
