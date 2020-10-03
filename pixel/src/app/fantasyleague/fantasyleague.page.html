@@ -74,7 +74,7 @@
     <ion-card-content>
       Aktuell hast du {{money}} <img class="imgMice" src="../../assets/icon/Maus2.png" alt="Description"/>  gesammelt. 
       Wie viele Mäuse haben deine virtuellen Konkurrenten gesammelt? <br>
-        <ion-button size="small" fill="outline" color="medium" slot="end">Mehr Info</ion-button>
+        <!--<ion-button size="small" fill="outline" color="medium" slot="end">Mehr Info</ion-button>-->
     </ion-card-content>
   </ion-card>
 
@@ -85,21 +85,22 @@
     </ion-card-header>
   
     <ion-card-content>
-      Anhand der Schwierigkeit wird das tägliche Ziel an zu erledigenenden Tasks gesetzt. 
-      Druch diese Einstellungen wird auch das Level der virtuellen Gegner gesetzt.
-      <br>
+      Anhand der Schwierigkeit wird das tägliche Ziel an zu erledigenenden Tasks gesetzt. Die letzten 8 Tage werden als Basis für die Berechnung genommen.
+      Druch diese Einstellungen wird auch das Level der virtuellen Gegner geregelt.
       
+      <ion-item lines="none">
       <ion-segment mode="ios" color="dark" value={{difficulty}}>
-        <ion-segment-button (click)="setDif('leicht')" value="leicht">
+        <ion-segment-button (click)="setDif(6)" value="leicht">
           <ion-label color="success">leicht</ion-label>
         </ion-segment-button>
-        <ion-segment-button (click)="setDif('mittel')"  value="mittel">
+        <ion-segment-button (click)="setDif(3)"  value="mittel">
           <ion-label color="primary">mittel</ion-label>
         </ion-segment-button>
-        <ion-segment-button (click)="setDif('schwer')"  value="schwer">
+        <ion-segment-button (click)="setDif(1)"  value="schwer">
           <ion-label color="danger">schwer</ion-label>
         </ion-segment-button>
       </ion-segment>
+    </ion-item>
 
     </ion-card-content>
   </ion-card>

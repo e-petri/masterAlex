@@ -4,6 +4,8 @@ import { Item } from "../interfaces/Item";
 import { AddItemPage } from "src/app/add-item/add-item.page";
 import { StorageService } from '../services/storage/storage.service';
 
+const NUM_DAYS = 8;
+
 @Component({
   selector: 'app-fantasyleague',
   templateUrl: './fantasyleague.page.html',
@@ -28,15 +30,30 @@ export class FantasyleaguePage implements OnInit {
     });
   }
 
+  async setDatasetEnemy() {
+    let tempDif = await this.storageService.getExpecationDifficulty();
+    if (tempDif === 6)
+      this.difficulty = "leicht";
+    else if (tempDif === 3)
+      this.difficulty = "mittel";
+    else if (tempDif === 1)
+      this.difficulty = "schwer";
+
+    let createdTasks = await this.storageService.getExpecationTasks();
+    this.aimTasks = Math.floor(createdTasks/tempDif);
+  }
+
   async ngOnInit() {
     this.money = await this.storageService.getMoney();
     this.myCurrentAvatar();
-    this.aimTasks = await this.storageService.getExpecationDifficulty();
+    await this.setDatasetEnemy();
     await this.storageService.setEnemyValues(this.aimTasks);
+    this.loadItems();
   }
 
-  setDif (value: string) {
-    this.difficulty = value;
+  setDif (value: number) {
+    this.storageService.setExpecationDifficulty(value);
+    this.ngOnInit();
   }
 
   async myCurrentAvatar () {
