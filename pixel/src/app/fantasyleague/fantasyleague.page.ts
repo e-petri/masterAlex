@@ -14,6 +14,8 @@ export class FantasyleaguePage implements OnInit {
   item: string;
   itemsTemp: Item[];
   itemsToDo: Item[];
+  money = 0;
+  aimTasks = 1;
   constructor(
     public navCtrl: NavController,
     private plt: Platform,
@@ -24,7 +26,9 @@ export class FantasyleaguePage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.money = await this.storageService.getMoney();
+    this.aimTasks = await this.storageService.getExpecationDifficulty();
   }
 
   
