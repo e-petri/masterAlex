@@ -138,7 +138,7 @@ export class StorageService {
         },
         {
           id: 83,
-          title: "Finde die Fantasy League",
+          title: "Finde das Spielerranking",
           value: null,
           modified: false,
           createdAt: "09.9.2020",
@@ -148,6 +148,16 @@ export class StorageService {
         },
         {
           id: 84,
+          title: "Ändere den Schwierigkeitsgrad",
+          value: null,
+          modified: false,
+          createdAt: "09.9.2020",
+          msgFin: "Besiege deine Gegner!",
+          finishedAt: null,
+          priority: null,
+        },
+        {
+          id: 85,
           title: "Ändere dein Avatar",
           value: null,
           modified: false,
@@ -157,7 +167,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 85,
+          id: 86,
           title: "Gib deine Mäuse aus",
           value: null,
           modified: false,
@@ -167,7 +177,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 86,
+          id: 87,
           title: "Platzhalter",
           value: null,
           modified: false,
@@ -176,7 +186,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 87,
+          id: 88,
           title: "Platzhalter",
           value: null,
           modified: false,
@@ -185,7 +195,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 88,
+          id: 89,
           title: "Platzhalter",
           value: null,
           modified: false,
@@ -194,7 +204,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 89,
+          id: 90,
           title: "Platzhalter",
           value: null,
           modified: false,
