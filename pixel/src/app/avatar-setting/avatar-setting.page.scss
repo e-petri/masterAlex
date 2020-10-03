@@ -7,12 +7,10 @@
   &__greeting{
     // splits welcome and user name into two lines
     span::before {content: '\A'; white-space: pre;}
-    font-size: 28px;
+    font-size: 35px;
     color: #f3f2f0;
-    position: relative;
-    left:0;
-    margin: 28px;
-    text-align: left;
+    text-align: center;
+    margin-top: 15px;
   }
 }
 
@@ -22,7 +20,7 @@
 }
 
 .imgFox {
-  max-height: 180px;
+  max-height: 150px;
   width: auto;
   margin: auto;
   display: block;

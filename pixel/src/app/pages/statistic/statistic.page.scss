@@ -10,7 +10,7 @@
     font-size: 35px;
     color: #f3f2f0;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
   }
 }
 
@@ -21,9 +21,10 @@
 }
 
 .imgFox {
-  padding-top: 30px;
-  padding-left: 25%;
-  height: 180px;
+  max-height: 150px;
+  width: auto;
+  margin: auto;
+  display: block;
 }
 
 .imgMice {
@@ -50,4 +51,17 @@ ion-checkbox {
 
 ion-item {
   --color: #524F49;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-badge {
+  padding: 6px;
+  margin-left: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }

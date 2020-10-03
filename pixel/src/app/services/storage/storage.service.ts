@@ -65,7 +65,49 @@ export class StorageService {
           modified: true,
         },
         {
-          id: 50,
+          id: 60,
+          title: "Horst Leerhofer",
+          value: 5,
+          modified: true,
+        },
+        {
+          id: 61,
+          title: "Vladimir Luping",
+          value: 15,
+          modified: true,
+        },
+        {
+          id: 62,
+          title: "Barack Ohlama",
+          value: 25,
+          modified: true,
+        },
+        {
+          id: 63,
+          title: "Kim Jong Lol",
+          value: 5,
+          modified: true,
+        },
+        {
+          id: 64,
+          title: "Donald Lump",
+          value: 20,
+          modified: true,
+        },
+        {
+          id: 65,
+          title: "Angela Mörtel",
+          value: 25,
+          modified: true,
+        },
+        {
+          id: 66,
+          title: "Junger Padawan",
+          value: 20,
+          modified: true,
+        },
+        {
+          id: 80,
           title: "Klicke mich",
           value: null,
           modified: false,
@@ -75,7 +117,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 51,
+          id: 81,
           title: "Wische mich nach links",
           value: null,
           modified: false,
@@ -85,7 +127,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 52,
+          id: 82,
           title: "Finde die Statistiken",
           value: null,
           modified: false,
@@ -95,7 +137,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 53,
+          id: 83,
           title: "Finde die Fantasy League",
           value: null,
           modified: false,
@@ -105,7 +147,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 54,
+          id: 84,
           title: "Ändere dein Avatar",
           value: null,
           modified: false,
@@ -115,7 +157,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 55,
+          id: 85,
           title: "Gib deine Mäuse aus",
           value: null,
           modified: false,
@@ -125,7 +167,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 56,
+          id: 86,
           title: "Platzhalter",
           value: null,
           modified: false,
@@ -134,7 +176,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 57,
+          id: 87,
           title: "Platzhalter",
           value: null,
           modified: false,
@@ -143,7 +185,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 58,
+          id: 88,
           title: "Platzhalter",
           value: null,
           modified: false,
@@ -152,7 +194,7 @@ export class StorageService {
           priority: null,
         },
         {
-          id: 58,
+          id: 89,
           title: "Platzhalter",
           value: null,
           modified: false,
