@@ -1,7 +1,8 @@
 
 .header{
-  min-height: 30vh;
-  max-height:31vh;
+  //min-height: 30vh;
+  //max-height:31vh;
+  height: 220px;
   background-image: url("../../../assets/Background1cut.png");
   background-size: cover;
   background-color: #646361;
@@ -20,12 +21,10 @@
 .headerNav{
   background-image: none;
   background-color: #D9762E;
-  min-height: 30vh;
-  max-height:31vh;
 }
 
 .imgFox {
-  max-height: 24vh;
+  max-height: 180px;
   width: auto;
   margin: auto;
   display: block;

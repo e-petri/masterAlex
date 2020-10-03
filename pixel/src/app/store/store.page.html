@@ -102,13 +102,13 @@
 
 <ion-list mode="ios">
   <ion-list-header>
-    Charts
+    Diagramme
   </ion-list-header>
   <ion-item>
     <ion-avatar slot="start">
     </ion-avatar>
-    <ion-label>Burndown Chart</ion-label>
-    <ion-button size="small" color="dark">
+    <ion-label>Donut Diagramm</ion-label>
+    <ion-button (click)="chartStatus(0, 10)" size="small" color="dark" disabled="{{chartDonut}}">
       10 Mäuse
       <ion-icon slot="end" name="cart"></ion-icon>
     </ion-button>
@@ -116,8 +116,8 @@
   <ion-item>
     <ion-avatar slot="start">
     </ion-avatar>
-    <ion-label>Bubble Chart</ion-label>
-    <ion-button size="small" color="dark">
+    <ion-label>Balken Diagramm</ion-label>
+    <ion-button (click)="chartStatus(1, 20)" size="small" color="dark" disabled="{{chartBurn}}">
       20 Mäuse
       <ion-icon slot="end" name="cart"></ion-icon>
     </ion-button>

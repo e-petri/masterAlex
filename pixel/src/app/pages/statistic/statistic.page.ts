@@ -45,6 +45,8 @@ export class StatisticPage implements OnInit {
   yyyy;
   todayDate;
   dataSetFox = [2, 2, 2, 2, 2, 2, 2, 2];
+  activeDonut: Boolean;
+  activeBurn: Boolean;
   @ViewChild("myList") myList;
   constructor(
     public navCtrl: NavController,
@@ -56,14 +58,20 @@ export class StatisticPage implements OnInit {
     public avatarService: AvatarService
   ) {
     this.plt.ready().then(() => {});
-
     this.getItemsData();
     this.getDate("all");
+    this.activeDonut = true;
+    this.activeBurn = true;
     //this.storageService.getToDoList();
   }
   ngOnInit() {
     this.dummyChart();
+    this.dummyChartBurn();
+    this.dummyChartDonut();
     this.dataForChart();
+    this.calcExpectation();
+    this.setDatasetEnemy();
+    this.setChartVisible();
   }
 
   ionViewDidLoad() {
@@ -85,13 +93,56 @@ export class StatisticPage implements OnInit {
     console.log("this.date", this.todayDate);
   }
 
+  async setChartVisible() {
+    let aStatus = [true, true];
+    for(let i = 0; i < 2; i++)
+      aStatus[i] = await this.storageService.getChartVisible(i);
+
+    this.activeDonut = aStatus[0];
+    this.activeBurn = aStatus[1];
+  }
+
+  async calcExpectation () {
+    
+    var dateComp = [null, null, null, null, null, null, null, null];
+    var cntItems = [0, 0, 0, 0, 0, 0, 0, 0];
+    let dataStor = await this.storageService.getItems();
+    let cntTotalItems = 0;
+
+    var i = 0;
+    for (i = 0; i < NUM_DAYS; i++) {
+      dataStor.forEach(cntup);
+      function cntup(item, index) {
+        var tempCreatedAt = new Date();
+        var datetest = tempCreatedAt.getDate() - i;
+        tempCreatedAt.setDate(datetest);
+        let compareTest = tempCreatedAt.toLocaleDateString();
+        dateComp[i] = compareTest;
+        if(item.createdAt == compareTest) {
+          cntTotalItems++;
+          cntItems[NUM_DAYS-1-i]++;
+        }
+      }
+    }
+    await this.storageService.setExpectationTasks(cntTotalItems);
+    return cntItems;
+  }
+
+  async setDatasetEnemy() {
+    let difficulty = await this.storageService.getExpecationDifficulty();
+    let createdTasks = await this.storageService.getExpecationTasks();
+    let i = 0;
+    for(i = 0; i < NUM_DAYS; i++) {
+      this.dataSetFox[i] = Math.floor(createdTasks/difficulty);
+    }
+  }
 
   async dummyChart() {
 
     /****** init value counter array days ******/
-    var cntItems = [0, 0, 0, 0, 0, 0, 0, 0];
     let dataStor = await this.storageService.getItems();
-    
+    var dateComp = [null, null, null, null, null, null, null, null];
+    var cntItems = [0, 0, 0, 0, 0, 0, 0, 0];
     /***** get playerData *****/
     var i;
     for (i = 0; i < NUM_DAYS; i++) {
@@ -101,11 +152,15 @@ export class StatisticPage implements OnInit {
         var datetest = tempCreatedAt.getDate() - i;
         tempCreatedAt.setDate(datetest);
         let compareTest = tempCreatedAt.toLocaleDateString();
+        dateComp[i] = compareTest;
         if(item.finishedAt == compareTest)
           cntItems[NUM_DAYS-1-i]++;
       }
     }
     console.log("Datastore cntItems: ", cntItems);
+
+    await this.calcExpectation();
+    await this.setDatasetEnemy();
     
     Chart.defaults.global.elements.line.fill = false;
     var ctx = document.getElementById("line-chart");
@@ -114,34 +169,37 @@ export class StatisticPage implements OnInit {
       type: "line",
       data: {
         labels: [
-          this.dd - 7 + "/" + this.mm,
-          this.dd - 6 + "/" + this.mm,
-          this.dd - 5 + "/" + this.mm,
-          this.dd - 4 + "/" + this.mm,
-          this.dd - 3 + "/" + this.mm,
-          this.dd - 2 + "/" + this.mm,
-          this.dd - 1 + "/" + this.mm,
-          this.dd + "/" + this.mm,
+          dateComp[7],
+          dateComp[6],
+          dateComp[5],
+          dateComp[4],
+          dateComp[3],
+          dateComp[2],
+          dateComp[1],
+          dateComp[0],
         ],
         datasets: [
           {
             data: cntItems,
             label: "TaskFox",
-            borderColor: "#3e95cd",
-            fill: false,
+            borderColor: "#D9762E",
+            fill: true,
+            backgroundColor: "#ffc296",
+            steppedLine: false,
           },
           {
             data: this.dataSetFox,
-            label: "Enemy",
-            borderColor: "#8e5ea2",
+            label: "Zielwert",
+            borderColor: "#b3ab9d",
             fill: false,
+            steppedLine: false,
           },
         ],
       },
       options: {
         title: {
           display: true,
-          text: "Deine erledigten Tasks vs Gegner",
+          text: "Deine erledigten Tasks vs täglliches Ziel",
         },
       },
     });
@@ -223,4 +281,133 @@ export class StatisticPage implements OnInit {
     // zählen wie viele Todos finishedAt an einem Tag hatten = Zahl von dem Tag
     //
   }
+
+  async dummyChartBurn() {
+    var dateComp = [null, null, null, null, null, null, null, null];
+    var cntItems = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    await this.setChartVisible();
+
+    if(this.activeBurn === false) {
+      var outputCreated = await this.calcExpectation();
+
+      /****** init value counter array days ******/
+      let dataStor = await this.storageService.getItems();
+      
+      var i;
+      for (i = 0; i < NUM_DAYS; i++) {
+        dataStor.forEach(cntup);
+        function cntup(item, index) {
+          var tempCreatedAt = new Date();
+          var datetest = tempCreatedAt.getDate() - i;
+          tempCreatedAt.setDate(datetest);
+          let compareTest = tempCreatedAt.toLocaleDateString();
+          dateComp[i] = compareTest;
+          if(item.finishedAt == compareTest)
+            cntItems[NUM_DAYS-1-i]++;
+        }
+      }
+      console.log("Datastore cntItems: ", cntItems);
+    }
+    
+    Chart.defaults.global.elements.line.fill = false;
+    var ctx = document.getElementById("burn-chart");
+    //var ctx = document.getElementById("line-chart").getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [
+          dateComp[7],
+          dateComp[6],
+          dateComp[5],
+          dateComp[4],
+          dateComp[3],
+          dateComp[2],
+          dateComp[1],
+          dateComp[0],
+        ],
+        datasets: [
+          {
+            data: outputCreated,
+            label: "Erstellt",
+            backgroundColor: "#524F49",
+            fill: true,
+          },
+          {
+            data: cntItems,
+            label: "Erledigt",
+            backgroundColor: "#D9762E",
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Deine erstellten Tasks vs erledigten Tasks",
+        },
+      },
+    });
+  }
+
+  async dummyChartDonut() {
+    var dateComp = [null, null, null, null, null, null, null, null];
+    var cntItems = [0, 0, 0, 0, 0, 0, 0, 0];
+    var finishedTasks = 2;
+    var unfinishedTasks = 2;
+
+    await this.setChartVisible();
+    var outputCreated = await this.calcExpectation();
+
+    /****** init value counter array days ******/
+    let dataStor = await this.storageService.getItems();
+    
+    if(this.activeDonut === false) {
+      finishedTasks = this.doneStorageData;
+      unfinishedTasks = this.unfinishedStorageData;
+      var i;
+      for (i = 0; i < NUM_DAYS; i++) {
+        dataStor.forEach(cntup);
+        function cntup(item, index) {
+          var tempCreatedAt = new Date();
+          var datetest = tempCreatedAt.getDate() - i;
+          tempCreatedAt.setDate(datetest);
+          let compareTest = tempCreatedAt.toLocaleDateString();
+          dateComp[i] = compareTest;
+          if(item.finishedAt == compareTest)
+            cntItems[NUM_DAYS-1-i]++;
+        }
+      }
+      console.log("Datastore cntItems: ", cntItems);
+    }
+    
+    Chart.defaults.global.elements.line.fill = false;
+    var ctx = document.getElementById("donut-chart");
+    //var ctx = document.getElementById("line-chart").getContext("2d");
+    new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: [
+          "Offen",
+          "Erledigt"
+        ],
+        datasets: [
+          {
+            data: [unfinishedTasks, finishedTasks],
+            label: "Erstellt",
+            backgroundColor: ["#b3ab9d", "#D9762E"],
+            fill: true,
+          }
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Deine offenen Tasks vs erledigten Tasks",
+        },
+      },
+    });
+  }
 }
+
+

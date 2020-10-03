@@ -38,25 +38,34 @@
 
 <ion-content [fullscreen]="true">
   <ion-content padding>
-    <ion-card>
+
+  <ion-card>
     <ion-badge color="light">Gesamt: {{countStorageData}}</ion-badge>
     <ion-badge color="medium">Offen: {{unfinishedStorageData}}</ion-badge>
     <ion-badge color="dark">Fertig: {{doneStorageData}}</ion-badge>
   </ion-card>
+
   <ion-card>
-    <ion-card-header>
-      Statistik erlediger Tasks
-    </ion-card-header>
     <ion-card-content>
-      <!-- <canvas #lineCanvas></canvas> -->
       <canvas id="line-chart" width="800" height="750"></canvas>
-       <!-- <canvas  #lineCanvas id="mixed-chart" width="800" height="450"></canvas> -->
     </ion-card-content>
   </ion-card>
+
+  <ion-card disabled="{{activeDonut}}">
+    <ion-card-content>
+      <canvas id="donut-chart" width="800" height="750"></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card disabled="{{activeBurn}}">
+    <ion-card-content>
+      <canvas id="burn-chart" width="800" height="750"></canvas>
+    </ion-card-content>
+  </ion-card>
+
   
 <!-- <script src="./myChart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
 </ion-content>
-</ion-content> 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> -->

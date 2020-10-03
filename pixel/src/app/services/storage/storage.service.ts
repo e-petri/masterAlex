@@ -25,6 +25,8 @@ export class StorageService {
           cntID: 100,
           cntMoney: 0,
           avatarNr: 0,
+          value: 0,
+          priority: 3
         },
         {
           id: 12,
@@ -48,6 +50,18 @@ export class StorageService {
           id: 15,
           title: "Fox5",
           value: 30,
+          modified: true,
+        },
+        {
+          id: 30,
+          title: "DonutChart",
+          value: 5,
+          modified: true,
+        },
+        {
+          id: 31,
+          title: "BarChart",
+          value: 5,
           modified: true,
         },
         {
@@ -346,6 +360,54 @@ export class StorageService {
     return this.storage.set(ITEMS_KEY, storageData);
   }
 
+  async setExpectationTasks(cntTotalItems) {
+    var storageData = await this.storage.get(ITEMS_KEY);
+
+    storageData[0].value = cntTotalItems;
+
+    return this.storage.set(ITEMS_KEY, storageData);
+  }
+
+  async getExpecationTasks() {
+    var storageData = await this.storage.get(ITEMS_KEY);
+    return storageData[0].value;
+  }
+
+  async setExpecationDifficulty(cntTotalItems) {
+    var storageData = await this.storage.get(ITEMS_KEY);
+
+    storageData[0].priority = cntTotalItems;
+
+    return this.storage.set(ITEMS_KEY, storageData);
+  }
+
+  async getExpecationDifficulty() {
+    var storageData = await this.storage.get(ITEMS_KEY);
+    return storageData[0].priority;
+  }
+
+  async setChartVisible(nr) {
+    let FoxNr = 30+nr;
+    var storageData = await this.storage.get(ITEMS_KEY);
+    
+    //find index of ID
+    var tempStorage = storageData;
+    const isID = (element) => element.id === FoxNr;
+    var index = tempStorage.findIndex(isID);
+    tempStorage[index].modified = false;
+    return this.storage.set(ITEMS_KEY, storageData);
+  }
+
+  async getChartVisible(nr) {
+    let FoxNr = 30+nr;
+    var storageData = await this.storage.get(ITEMS_KEY);
+    
+    //find index of ID
+    var tempStorage = storageData;
+    const isID = (element) => element.id === FoxNr;
+    var index = tempStorage.findIndex(isID);
+    return tempStorage[index].modified;
+  }
   // async getStorageValues(): Promise<any> {
   //   return JSON.parse(await this.storage.get(ITEMS_KEY));
   // }

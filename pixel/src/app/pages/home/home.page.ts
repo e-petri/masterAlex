@@ -47,8 +47,6 @@ export class HomePage {
     this.plt.ready().then(() => {
       this.loadItems();
     });
-    //this.getAvatarInfo();
-    //console.log("date today", this.today.toLocaleDateString());
   }
   ionViewDidLoad() {
     setTimeout(() => {
@@ -92,11 +90,6 @@ export class HomePage {
     console.log("checked item", title);
   }
 
-  /*async getAvatarInfo(): Promise<any> {
-    this.avatarInfo = await this.avatarService.getAvatar();
-    console.log("avatar.info", this.avatarInfo);
-  }*/
-
   generateMsg() {
     let aMsg = [
       "heftiger Typ",
@@ -126,8 +119,6 @@ export class HomePage {
       console.log("test if data is added", test);
       return;
     }
-    // this.storage.set("tasks", "newItem");
-    // this.newItem.modified = Date.now();
     this.newItem.id = null;
     this.newItem.title = input;
     this.newItem.value = null;
@@ -143,17 +134,6 @@ export class HomePage {
     });
   }
 
-  // updateItem(item: Item) {
-  //   // item.title = "UPDATED: ${item.title}";
-  //   item.title = JSON.parse(item.title);
-  //   item.modified = Date.now();
-
-  //   this.storageService.updateItem(item).then((item) => {
-  //     this.showToast("Item updated!");
-  //     this.myList.closeSlidingItems();
-  //     this.loadItems();
-  //   });
-  // }
   setFoxPath(foxNr) {
     if(foxNr === 0)
       this.foxPath = "../../../assets/icon/Fox0.png";
@@ -193,40 +173,10 @@ export class HomePage {
   }
 
   async deleteListItem(item) {
-    // const storageItems = await this.storageService.getItems();
-    // console.log("deleteListItem: ", item.value);
-    // const test =storageItems.filter(
-    //   (items) => items.title === item.value
-    // );
-    // console.log("test", test);
-    
-    // item.finishedAt = this.today.toLocaleDateString();
     const todaysDate = this.today.toLocaleDateString();
     await this.storageService.updateItem(item, "finishedAt", todaysDate);
     this.storageService.setMoney("incMoney", 1);
     this.loadItems();
-
-    //this.storageService.deleteItem(item);
-
-    /*await this.storageService.getItems().then((items: Item[]) => {
-      for (let i of items) {
-        if (i.title === item.title) {
-        }
-        console.log("found item title", i.title, item.title);
-      }
-    });
-    console.log("item", item, item.finishedAt);*/
-    // this.itemsToDo = this.items.filter((item) => item.finishedAt !== null);
-    // console.log("this.itemsToDo", this.itemsToDo);
-    // const storageData = await this.storageService.getItems();
-    // //     const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-
-    // //     const result = words.filter(word => word.length > 6);
-    // const newStorageData = storageData.filter(
-    //   (items) => item.value !== items.value
-    // );
-    // this.storageService.newArray(newStorageData);
-    // return this.itemsToDo;
   }
   async showToast(msg) {
     const toast = await this.toastController.create({
@@ -241,7 +191,6 @@ export class HomePage {
       cssClass: "my-custom-class",
       componentProps: {
         firstName: "Douglas",
-        // TODO: hier item objekt übergeben
       },
     });
     return await modal.present();
@@ -259,16 +208,4 @@ export class HomePage {
       this.navCtrl.navigateRoot("/avatar-setting");
     }
   }
-
-  // async deleteAllItems(item) {
-  //   // item.title = "UPDATED: ${item.title}";
-  //   // item.title = JSON.parse(item.title);
-  //   item.modified = Date.now();
-
-  //   await this.storageService.deleteItem(item).then((item) => {
-  //     this.showToast("Item updated!");
-  //     this.myList.closeSlidingItems();
-  //     this.loadItems();
-  //   });
-  // }
 }
