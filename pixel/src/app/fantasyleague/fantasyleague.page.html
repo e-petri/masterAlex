@@ -13,10 +13,9 @@
     <ion-list>
       <ion-item (click)="navToPage('home')"> Home </ion-item>
       <ion-item (click)="navToPage('statistic')">Statistik</ion-item>
-      <ion-item (click)="navToPage('fantasyleague')">Fantasy League</ion-item>
+      <ion-item (click)="navToPage('fantasyleague')">Spielerranking</ion-item>
       <ion-item (click)="navToPage('avatar-setting')">Avatar</ion-item>
       <ion-item (click)="navToPage('store')">Marktplatz</ion-item>
-      <ion-item >Einstellungen</ion-item>
 
     </ion-list>
   </ion-content>
@@ -69,7 +68,7 @@
   <ion-card>
     <ion-card-header>
       <ion-card-subtitle>Ausgewählter Avatar</ion-card-subtitle>
-      <ion-card-title>Junger Padawan</ion-card-title>
+      <ion-card-title>{{currentAvatar}}</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
@@ -90,14 +89,14 @@
       Druch diese Einstellungen wird auch das Level der virtuellen Gegner gesetzt.
       <br>
       
-      <ion-segment mode="ios" color="dark" value="mittel">
-        <ion-segment-button value="leicht">
+      <ion-segment mode="ios" color="dark" value={{difficulty}}>
+        <ion-segment-button (click)="setDif('leicht')" value="leicht">
           <ion-label color="success">leicht</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="mittel">
+        <ion-segment-button (click)="setDif('mittel')"  value="mittel">
           <ion-label color="primary">mittel</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="schwer">
+        <ion-segment-button (click)="setDif('schwer')"  value="schwer">
           <ion-label color="danger">schwer</ion-label>
         </ion-segment-button>
       </ion-segment>

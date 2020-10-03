@@ -103,7 +103,7 @@ export class StorageService {
         {
           id: 66,
           title: "Junger Padawan",
-          value: 20,
+          value: 0,
           modified: true,
         },
         {
@@ -361,6 +361,8 @@ export class StorageService {
     else if (typeoperator === "subMoney")
       storageData[0].cntMoney -= value;
 
+      storageData[13].value = storageData[0].cntMoney;
+
     return this.storage.set(ITEMS_KEY, storageData);
   }
 
@@ -405,9 +407,13 @@ export class StorageService {
   }
 
   async setFoxNr(foxNr) {
+    var foxName = [
+      "Junger Padawan", "Harry Propper", "Flower Power", 
+      "Foxy Holmes", "Prinzessin Fox", "Space Invader"];
     var storageData = await this.storage.get(ITEMS_KEY);
 
     storageData[0].avatarNr = foxNr;
+    storageData[13].title = foxName[foxNr];
 
     return this.storage.set(ITEMS_KEY, storageData);
   }
@@ -459,6 +465,22 @@ export class StorageService {
     const isID = (element) => element.id === FoxNr;
     var index = tempStorage.findIndex(isID);
     return tempStorage[index].modified;
+  }
+
+  async getCurrentAvatar() {
+    var storageData = await this.storage.get(ITEMS_KEY);
+    return storageData[13].title;
+  }
+
+  async setEnemyValues(aimTask) {
+    var storageData = await this.storage.get(ITEMS_KEY);
+    storageData[7].value = Math.floor(aimTask* 8 * 0.9);
+    storageData[8].value = Math.floor(aimTask* 8 * 0.5);
+    storageData[9].value = Math.floor(aimTask* 8 * 0.2);
+    storageData[10].value = Math.floor(aimTask* 8 * 0.5);
+    storageData[11].value = Math.floor(aimTask* 8 * 0.7);
+    storageData[12].value = Math.floor(aimTask* 8 * 0.5);
+    return this.storage.set(ITEMS_KEY, storageData);
   }
   // async getStorageValues(): Promise<any> {
   //   return JSON.parse(await this.storage.get(ITEMS_KEY));

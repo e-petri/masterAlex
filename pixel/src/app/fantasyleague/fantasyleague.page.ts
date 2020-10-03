@@ -15,7 +15,9 @@ export class FantasyleaguePage implements OnInit {
   itemsTemp: Item[];
   itemsToDo: Item[];
   money = 0;
-  aimTasks = 1;
+  aimTasks = null;
+  currentAvatar = " ";
+  difficulty = " ";
   constructor(
     public navCtrl: NavController,
     private plt: Platform,
@@ -28,10 +30,18 @@ export class FantasyleaguePage implements OnInit {
 
   async ngOnInit() {
     this.money = await this.storageService.getMoney();
+    this.myCurrentAvatar();
     this.aimTasks = await this.storageService.getExpecationDifficulty();
+    await this.storageService.setEnemyValues(this.aimTasks);
   }
 
-  
+  setDif (value: string) {
+    this.difficulty = value;
+  }
+
+  async myCurrentAvatar () {
+    this.currentAvatar = await this.storageService.getCurrentAvatar();
+  }
 
   async loadItems() {
     const alert  = await this.storageService.getItems();
