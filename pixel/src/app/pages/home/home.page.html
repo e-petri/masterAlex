@@ -70,10 +70,10 @@
             <!-- [value]="currentItem.name"
             (input)="currentItem.name=$event.target.value" -->
             <ion-item-options side="end">
-              <ion-item-option (click)="presentModal(item)"
+              <!--<ion-item-option (click)="presentModal(item)"
                 ><ion-icon name="create"></ion-icon
-              ></ion-item-option>
-              <ion-item-option (click)="deleteItem(item)">
+              ></ion-item-option>-->
+              <ion-item-option color="medium" (click)="deleteItem(item)">
                 <ion-icon name="trash"></ion-icon
               ></ion-item-option>
             </ion-item-options>

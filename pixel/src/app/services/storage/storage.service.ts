@@ -25,7 +25,7 @@ export class StorageService {
           cntID: 100,
           cntMoney: 0,
           avatarNr: 0,
-          value: 0,
+          value: 7,
           priority: 3
         },
         {
@@ -108,12 +108,12 @@ export class StorageService {
         },
         {
           id: 80,
-          title: "Klicke mich",
+          title: "Klicke mich um Mäuse zu verdienen",
           value: null,
           modified: false,
-          createdAt: "11.9.2020",
+          createdAt: null,
           finishedAt: null,
-          msgFin: "Toller erster Job",
+          msgFin: "Super, für jede erledigte Aufgabe bekommst du eine Maus",
           priority: null,
         },
         {
@@ -121,9 +121,9 @@ export class StorageService {
           title: "Wische mich nach links",
           value: null,
           modified: false,
-          createdAt: "10.9.2020",
+          createdAt: null,
           finishedAt: null,
-          msgFin: "Super jetzt kannst du löschen",
+          msgFin: "Super jetzt weißt du wo der Löschbutten ist",
           priority: null,
         },
         {
@@ -131,7 +131,7 @@ export class StorageService {
           title: "Finde die Statistiken",
           value: null,
           modified: false,
-          createdAt: "13.9.2020",
+          createdAt: null,
           msgFin: "Deine Statistik ist schon toll",
           finishedAt: null,
           priority: null,
@@ -141,7 +141,7 @@ export class StorageService {
           title: "Finde das Spielerranking",
           value: null,
           modified: false,
-          createdAt: "09.9.2020",
+          createdAt: null,
           msgFin: "Besiege deine Gegner!",
           finishedAt: null,
           priority: null,
@@ -151,8 +151,8 @@ export class StorageService {
           title: "Ändere den Schwierigkeitsgrad",
           value: null,
           modified: false,
-          createdAt: "09.9.2020",
-          msgFin: "Besiege deine Gegner!",
+          createdAt: null,
+          msgFin: "Es zählen die letzten 8 Tage, deswegen haben deine Gegner erstmal ein Vorsprung",
           finishedAt: null,
           priority: null,
         },
@@ -161,7 +161,7 @@ export class StorageService {
           title: "Ändere dein Avatar",
           value: null,
           modified: false,
-          createdAt: "07.9.2020",
+          createdAt: null,
           msgFin: "Hübsch siehst du aus :)",
           finishedAt: null,
           priority: null,
@@ -171,45 +171,9 @@ export class StorageService {
           title: "Gib deine Mäuse aus",
           value: null,
           modified: false,
-          createdAt: "27.9.2020",
+          createdAt: null,
           msgFin: "Money money!!!",
           finishedAt: null,
-          priority: null,
-        },
-        {
-          id: 87,
-          title: "Platzhalter",
-          value: null,
-          modified: false,
-          createdAt: "27.9.2020",
-          finishedAt: "27.9.2020",
-          priority: null,
-        },
-        {
-          id: 88,
-          title: "Platzhalter",
-          value: null,
-          modified: false,
-          createdAt: "22.9.2020",
-          finishedAt: "24.9.2020",
-          priority: null,
-        },
-        {
-          id: 89,
-          title: "Platzhalter",
-          value: null,
-          modified: false,
-          createdAt: "22.9.2020",
-          finishedAt: "29.9.2020",
-          priority: null,
-        },
-        {
-          id: 90,
-          title: "Platzhalter",
-          value: null,
-          modified: false,
-          createdAt: "22.9.2020",
-          finishedAt: "27.9.2020",
           priority: null,
         }
       ];
@@ -421,7 +385,7 @@ export class StorageService {
   async setExpectationTasks(cntTotalItems) {
     var storageData = await this.storage.get(ITEMS_KEY);
 
-    storageData[0].value = cntTotalItems;
+    storageData[0].value = cntTotalItems+7;
 
     return this.storage.set(ITEMS_KEY, storageData);
   }
@@ -474,12 +438,12 @@ export class StorageService {
 
   async setEnemyValues(aimTask) {
     var storageData = await this.storage.get(ITEMS_KEY);
-    storageData[7].value = Math.floor(aimTask* 8 * 0.9);
-    storageData[8].value = Math.floor(aimTask* 8 * 0.5);
-    storageData[9].value = Math.floor(aimTask* 8 * 0.2);
-    storageData[10].value = Math.floor(aimTask* 8 * 0.5);
-    storageData[11].value = Math.floor(aimTask* 8 * 0.7);
-    storageData[12].value = Math.floor(aimTask* 8 * 0.5);
+    storageData[7].value = Math.floor(aimTask* 3 * 0.9);
+    storageData[8].value = Math.floor(aimTask* 3 * 0.5);
+    storageData[9].value = Math.floor(aimTask* 3 * 0.2);
+    storageData[10].value = Math.floor(aimTask* 2 * 0.5);
+    storageData[11].value = Math.floor(aimTask* 2 * 0.7);
+    storageData[12].value = Math.floor(aimTask* 3 * 0.5);
     return this.storage.set(ITEMS_KEY, storageData);
   }
   // async getStorageValues(): Promise<any> {

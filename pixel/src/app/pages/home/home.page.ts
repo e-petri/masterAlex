@@ -92,17 +92,20 @@ export class HomePage {
 
   generateMsg() {
     let aMsg = [
-      "heftiger Typ",
-      "du schlauer Fuchs",
-      "nice Job bro",
+      "MEGA gut",
+      "Du schlauer Fuchs",
+      "Nice job bro",
       "juhu und noch einer",
-      "ausgezeichnet",
-      "bam bam bam",
-      "weiter, immer weiter gehts",
-      "perfekt",
+      "Ausgezeichnet :D",
+      "Du bist ja mega fleißig",
+      "Weiter, immer weiter gehts",
+      "Perfekt",
       "Ran an die Mäuse, nice",
       "tip top",
-      "und noch einer für die Statistik"
+      "Und noch einer für die Statistik",
+      "was kaufst du dir von den ganzen Mäusen?",
+      "chillig",
+      "Läuft bei dir"
     ]
     let rando = Math.floor(Math.random() * aMsg.length);
 
