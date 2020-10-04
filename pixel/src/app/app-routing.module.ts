@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'avatar-setting',
     loadChildren: () => import('./avatar-setting/avatar-setting.module').then( m => m.AvatarSettingPageModule)
   },
+  {
+    path: 'story',
+    loadChildren: () => import('./story/story.module').then( m => m.StoryPageModule)
+  },
 
 ];
 

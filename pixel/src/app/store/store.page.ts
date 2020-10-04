@@ -106,6 +106,9 @@ export class StorePage implements OnInit {
       this.navCtrl.navigateRoot("/store");
     } else if (pageName === "avatar-setting") {
       this.navCtrl.navigateRoot("/avatar-setting");
+    } else if (pageName === "story") {
+      this.navCtrl.navigateRoot("/story");
     }
+    
   }
 }

@@ -1,0 +1,65 @@
+<ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+  <ion-header>
+    <div class="header headerNav">
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false" color="light"></ion-menu-button>
+      </ion-buttons>
+      <!--<div class="header__greeting">{{today | date: 'dd/MM/yyyy'}}</div>-->
+    </div>
+
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item (click)="navToPage('home')"> Home </ion-item>
+      <ion-item (click)="navToPage('statistic')">Statistik</ion-item>
+      <ion-item (click)="navToPage('fantasyleague')">Spielerranking</ion-item>
+      <ion-item (click)="navToPage('avatar-setting')">Avatar</ion-item>
+      <ion-item (click)="navToPage('store')">Marktplatz</ion-item>
+      <ion-item (click)="navToPage('story')">Fox Story</ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+
+
+<ion-header>
+  <div class="header">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false" color="light"></ion-menu-button>
+    </ion-buttons>
+    <div class="header__greeting"><span>Fox Story</span></div>
+  </div>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Taskfox</ion-card-subtitle>
+      <ion-card-title>Es war einmal...</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      in einem hellen wunderschön buntem Wald viele freudige Füchse. Die Füchse fanden eines Tages ganz tolle leckere
+      Pilze und schlugen sich damit den Magen voll. Mit diesen Pilzen sind sie immer gut gelaunt und haben super viel
+      Energie. Die einzige Nebenwirkung ist, dass sie jetzt alle immer super viel Hunger haben und deshalb ganz viele
+      Mäuse sammeln müssen. Da es aber nicht genügend Mäuse für alle Füchse im Wald gibt, erledigen die Füchse jetzt für
+      Bauernhof-Katzen Aufgaben. Diese Katzen haben einen großen Mäusevorrat und bieten diese als Bezahlung für das
+      Erledigen von Tätigkeiten an.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Taskfox</ion-card-subtitle>
+      <ion-card-title>Spielziel</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Du spielst den „TaskFox“, trägst Aufgaben zum Erledigen in die App ein und erhältst
+      dafür „Mäuse“. Diese sind eine Art Währung innerhalb des Spieles, mit welcher du im Store einkaufen gehen kannst.
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

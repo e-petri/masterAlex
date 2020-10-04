@@ -1,0 +1,66 @@
+
+.header{
+    height: 220px;
+    background-image: url("../../assets/Background1cut.png");
+    background-size: cover;
+    background-color: #646361;
+    &__greeting{
+      // splits welcome and user name into two lines
+      span::before {content: '\A'; white-space: pre;}
+      font-size: 35px;
+      color: #f3f2f0;
+      text-align: center;
+      margin-top: 15px;
+    }
+  }
+  
+  
+  .headerNav{
+    background-image: none;
+    background-color: #D9762E;
+  }
+  
+  .imgFox {
+    max-height: 150px;
+    width: auto;
+    margin: auto;
+    display: block;
+  }
+  
+  .imgMice {
+    height: 23px;
+  }
+  
+  .Enemy {
+    float: left;
+    margin-top: 4px;
+  }
+  
+  .Nr {
+    margin-top: 3px;
+    margin-right: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #D9762E;
+  }
+  
+  .headerMoney {
+    color: #EEEDE9;
+    margin: auto;
+    font-size: 18px;
+  }
+  
+  .titleSpan {
+    color: #EEEDE9;
+    margin: auto;
+    width: 80%;
+    font-size: 18px;
+  }
+  
+  ion-checkbox {
+    --background: #EEEDE9;
+  }
+  
+  ion-item {
+    --color: #524F49;
+  }

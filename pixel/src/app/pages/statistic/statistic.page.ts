@@ -244,6 +244,8 @@ export class StatisticPage implements OnInit {
       this.navCtrl.navigateRoot("/store");
     } else if (pageName === "avatar-setting") {
       this.navCtrl.navigateRoot("/avatar-setting");
+    } else if (pageName === "story") {
+      this.navCtrl.navigateRoot("/story");
     }
   }
   async dataForChart() {
@@ -262,13 +264,13 @@ export class StatisticPage implements OnInit {
     const storageData = await this.storageService.getItems();
     console.log("storageData", storageData);
 
-    this.countStorageData = storageData.length-14;
+    this.countStorageData = storageData.length-15;
     console.log("countStorageData", this.countStorageData);
 
     this.doneStorageData = storageData.filter(
       (items) => items.finishedAt !== null
     ).length;
-    this.doneStorageData -= 14;
+    this.doneStorageData -= 15;
     console.log("doneStorageData", this.doneStorageData);
 
     this.unfinishedStorageData = this.countStorageData - this.doneStorageData;

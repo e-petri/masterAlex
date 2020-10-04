@@ -128,11 +128,11 @@ export class StorageService {
         },
         {
           id: 82,
-          title: "Finde die Statistiken",
+          title: "Finde die Tax Fox",
           value: null,
           modified: false,
           createdAt: null,
-          msgFin: "Deine Statistik ist schon toll",
+          msgFin: "Perfekt, jetzt weißt du um was es im Taskfox geht",
           finishedAt: null,
           priority: null,
         },
@@ -175,7 +175,17 @@ export class StorageService {
           msgFin: "Money money!!!",
           finishedAt: null,
           priority: null,
-        }
+        },
+        {
+          id: 87,
+          title: "Finde die Statistiken",
+          value: null,
+          modified: false,
+          createdAt: null,
+          msgFin: "Deine Statistik ist schon toll",
+          finishedAt: null,
+          priority: null,
+        },
       ];
       this.storage.set(ITEMS_KEY, this.items);
       storageData = await this.storage.get(ITEMS_KEY);
@@ -385,7 +395,7 @@ export class StorageService {
   async setExpectationTasks(cntTotalItems) {
     var storageData = await this.storage.get(ITEMS_KEY);
 
-    storageData[0].value = cntTotalItems+7;
+    storageData[0].value = cntTotalItems+8;
 
     return this.storage.set(ITEMS_KEY, storageData);
   }
