@@ -63,25 +63,25 @@ export class StorePage implements OnInit {
 
   async chartStatus(value: any, price) {
     if(price > this.money)
-      this.showToast("sorry, du hast noch nicht genügend Mäuse", "danger");
+      this.showToast("Sorry, du hast noch nicht genügend Mäuse", "danger");
     else {
       this.storageService.setChartVisible(value);
       await this.setChartStatus();
       await this.storageService.setMoney("subMoney", price);
       await this.ngOnInit();
-      this.showToast("super, Avatar zu deinem Inventar hinzugefügt", "medium");
+      this.showToast("Super, Avatar zu deinem Inventar hinzugefügt", "medium");
     }
   }
 
   async foxAvatar(value: any, price) {
     if(price > this.money)
-      this.showToast("sorry, du hast noch nicht genügend Mäuse", "danger");
+      this.showToast("Sorry, du hast noch nicht genügend Mäuse", "danger");
     else {
       this.storageService.setFoxStatus(value);
       await this.setFoxStatus();
       await this.storageService.setMoney("subMoney", price);
       await this.ngOnInit();
-      this.showToast("super, Avatar zu deinem Inventar hinzugefügt", "medium");
+      this.showToast("Super, Avatar zu deinem Inventar hinzugefügt", "medium");
     }
   }
 

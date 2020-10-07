@@ -94,17 +94,17 @@ export class HomePage {
     let aMsg = [
       "MEGA gut",
       "Du schlauer Fuchs",
-      "Nice job bro",
-      "juhu und noch einer",
+      "Nice job Bro",
+      "Juhu und noch eine Maus",
       "Ausgezeichnet :D",
       "Du bist ja mega fleißig",
-      "Weiter, immer weiter gehts",
+      "Weiter, immer weiter geht's",
       "Perfekt",
       "Ran an die Mäuse, nice",
-      "tip top",
-      "Und noch einer für die Statistik",
-      "was kaufst du dir von den ganzen Mäusen?",
-      "chillig",
+      "Tip top",
+      "Und noch eins für die Statistik",
+      "Was kaufst du dir von den ganzen Mäusen?",
+      "Chillig",
       "Läuft bei dir"
     ]
     let rando = Math.floor(Math.random() * aMsg.length);
@@ -132,7 +132,7 @@ export class HomePage {
 
     this.storageService.addItem(this.newItem).then((item) => {
       this.newItem = <Item>{};
-      this.showToast("Item added!");
+      this.showToast("Aufgabe hinzugefügt!");
       this.loadItems();
     });
   }

@@ -132,7 +132,7 @@ export class StorageService {
           value: null,
           modified: false,
           createdAt: null,
-          msgFin: "Perfekt, jetzt weißt du um was es im Taskfox geht",
+          msgFin: "Perfekt, jetzt weißt du um was es im TaskFox geht",
           finishedAt: null,
           priority: null,
         },

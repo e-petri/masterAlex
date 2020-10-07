@@ -39,11 +39,11 @@
 <ion-content [fullscreen]="true">
   <ion-content padding>
     <ion-item>
-      <ion-input [(ngModel)]="newItem.value" placeholder="Enter task" size="default">
+      <ion-input [(ngModel)]="newItem.value" placeholder="Beschreibung der Aufgabe" size="default">
         <div class="item-note" item-end></div
       ></ion-input>
       <div class="item-note" item-end>
-        <ion-button (click)="addItem(newItem.value)" size="default" color="medium">Add Task</ion-button>
+        <ion-button (click)="addItem(newItem.value)" size="default" color="medium">+</ion-button>
       </div>
     </ion-item>
     <div>

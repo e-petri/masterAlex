@@ -264,13 +264,13 @@ export class StatisticPage implements OnInit {
     const storageData = await this.storageService.getItems();
     console.log("storageData", storageData);
 
-    this.countStorageData = storageData.length-15;
+    this.countStorageData = storageData.length-14;
     console.log("countStorageData", this.countStorageData);
 
     this.doneStorageData = storageData.filter(
       (items) => items.finishedAt !== null
     ).length;
-    this.doneStorageData -= 15;
+    this.doneStorageData -= 14;
     console.log("doneStorageData", this.doneStorageData);
 
     this.unfinishedStorageData = this.countStorageData - this.doneStorageData;

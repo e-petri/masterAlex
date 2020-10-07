@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "Taskfox",
+  "appName": "TaskFox",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
